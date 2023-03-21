@@ -16,10 +16,26 @@ session_start();
             <div class = "container">
                 <div class = "content">
                     <h1> Welcome</h1>
-                    <form action="procedures/signin.php" method="post">
+                    <?php
+                        if (isset($_GET["error"])){
+                            if($_GET["error"] == "none"){
+                                echo "<p class='errormsg'>New user was registered successfully! </p>";
+                            }
+                            if($_GET["error"] == "emptyfields"){
+                                echo "<p class='errormsg'>Fields cannot be empty. Please try again. </p>";
+                            }
+                            if($_GET["error"] == "usernotfound"){
+                                echo "<p class='errormsg'>Username was not found. Please try again. </p>";
+                            }
+                            if($_GET["error"] == "passwordwrong"){
+                                echo "<p class='errormsg'>Password did not match our records. Please try again.</p>";
+                            }
+                        }
+                    ?>
+                    <form action="procedures/login.php" method="post">
                     <input type="text" name="username" placeholder="Enter Username">
                     <input type="password" name="password" placeholder="Enter Password">
-                    <button type="submit" class="button">Sign in</button>
+                    <button type="submit" class="button">Log in</button>
                     </form>
                     <p>New user? <a href="signup.php">Click here to sign up!</p> 
                     <br>

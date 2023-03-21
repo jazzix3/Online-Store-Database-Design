@@ -51,7 +51,7 @@ if (isset($_POST["submit"])) {
             }
         }
         
-        // All inputs are valid--- insert user information into database and redirect user to signin page
+        // All inputs are valid--- insert user information into database and redirect user to login page
         else{
             $stmt2 = $conn->prepare("INSERT INTO user (username, password, firstName, lastName, email) VALUES (?, ?, ?, ?, ?)");
 

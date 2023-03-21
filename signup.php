@@ -12,7 +12,7 @@
         <div class = "container">
             <div class = "content">
                 <h2>Create an account</h2>
-                    <form action="procedures/registeruser.php" method="post">
+                    <form action="procedures/register.php" method="post">
                     <input type="text" name="username" placeholder="Enter Username">
                     <input type="password" name="password" placeholder="Enter Password">
                     <input type="password" name="cpassword" placeholder="Confirm Password">
@@ -22,7 +22,7 @@
 
                     <button type="submit" name="submit" class="button">Register New User</button>
                     </form>
-                <p>Already a user? <a href="index.php">Click here to sign in!</p>
+                <p>Already a user? <a href="index.php">Click here to log in!</p>
             </div>
         </div>
 

@@ -18,6 +18,12 @@ a:hover{
     text-decoration:none;
 }
 
+p.errormsg{
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    color:#ff9f1c
+}
+
 .container{
     width: 400px;
     background-color: #ffffff;
@@ -79,8 +85,8 @@ a:hover{
 .button-2{
     width: 200px;
     background-color: #616161;
-    padding: 10px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 12px;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -88,8 +94,8 @@ a:hover{
 .button-2:hover{
     width: 200px;
     background-color: #2ec4b6;
-    padding: 10px;
-    font-size: 14px;
+    padding: 8px;
+    font-size: 12px;
     color: #ffffff;
     border: none;
     border-radius: 5px;

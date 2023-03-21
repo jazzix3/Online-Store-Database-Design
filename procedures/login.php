@@ -19,14 +19,9 @@ else{
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    $numusers = mysqli_num_rows($result);
-
-    if ($conn->query($stmt) !== TRUE) {
-        header("Location:../index.php?error=sqlerror1");         
-        } 
 
     // Username must exist in database
-    if ($numusers = 0){
+    if(mysqli_num_rows($result) === 0){
         header("Location:../index.php?error=usernotfound");
         exit();
     }
@@ -35,20 +30,21 @@ else{
         $row = $result->fetch_assoc();
 
         // Password must match db password
-        if($row["password"] !== $password) {
-            header("Location: ../index.php?error=wrongpassword");
-            exit();    
+        if($row["password"]!== $password) {
+            header("Location: ../index.php?error=passwordwrong");
+            exit();
+               
         }
 
-    // All inputs are valid--- start session and redirect user to home page
-        else {
+        // All inputs are valid--- redirect user to signin page
+        else { 
             session_start();
             $_SESSION["username"] = $row["username"];
             header("Location: ../home.php");
-            exit();
+            exit(); 
         }
-
     }
+
 
 }
 
