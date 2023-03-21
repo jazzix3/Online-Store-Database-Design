@@ -30,12 +30,18 @@ session_start();
                             if($_GET["error"] == "passwordwrong"){
                                 echo "<p class='errormsg'>Password did not match our records. Please try again.</p>";
                             }
+                            if($_GET["error"] == "invalidsession"){
+                                echo "<p class='errormsg'>You did not have access to that page because you are not logged in.</p>";
+                            }
+                            if($_GET["error"] == "loggedout"){
+                                echo "<p class='errormsg'>You have successfully logged out.</p>";
+                            }
                         }
                     ?>
                     <form action="procedures/login.php" method="post">
-                    <input type="text" name="username" placeholder="Enter Username">
-                    <input type="password" name="password" placeholder="Enter Password">
-                    <button type="submit" class="button">Log in</button>
+                        <input type="text" name="username" placeholder="Enter Username">
+                        <input type="password" name="password" placeholder="Enter Password">
+                        <button type="submit" class="button">Log in</button>
                     </form>
                     <p>New user? <a href="signup.php">Click here to sign up!</p> 
                     <br>

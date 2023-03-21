@@ -1,13 +1,12 @@
 <?php
+// *** Change this to your server info***
 $servername = "localhost";
 $username = "root";
 $password = "mysql";
 $dbname = "COMP440";
 
-// Create connection
+// Create connection and display error if connection fails
 $conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
 if ($conn->connect_error) {
   exit("Database connection failed: " . $conn->connect_error);
 }

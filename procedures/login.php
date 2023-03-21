@@ -6,7 +6,7 @@ $password = $_POST["password"];
 
 
 // Validate input--- if any case fails return user to index.php, include error message 
-// in header (for debugging), and terminate script.
+// in header, and terminate script.
 
 // Fields must not be empty
 if(empty($username) || empty($password)) {
@@ -15,7 +15,7 @@ if(empty($username) || empty($password)) {
 }
 
 else{
-    $stmt = $conn->prepare("SELECT username, password FROM user WHERE username=?");
+    $stmt = $conn->prepare("SELECT username, password, firstName FROM user WHERE username=?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -27,19 +27,20 @@ else{
     }
 
     else {
-        $row = $result->fetch_assoc();
+        $existinguser = $result->fetch_assoc();
 
-        // Password must match db password
-        if($row["password"]!== $password) {
+        // If username exists, Password must match db password
+        if($existinguser["password"]!== $password) {
             header("Location: ../index.php?error=passwordwrong");
             exit();
                
         }
 
-        // All inputs are valid--- redirect user to signin page
+        // All inputs are valid--- start a session, redirect user to signin page
         else { 
             session_start();
-            $_SESSION["username"] = $row["username"];
+            $_SESSION["username"] = $existinguser["username"];
+            $_SESSION["firstName"] = $existinguser["firstName"];
             header("Location: ../home.php");
             exit(); 
         }

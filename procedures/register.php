@@ -1,6 +1,6 @@
 <?php
 
-// Check if user accessed page via sign-up button
+// Check if user accessed this page by clicking button on signup.php, else redirect to signup.php
 if (isset($_POST["submit"])) {
 
     require ("dbconnect.php");
@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
 
     
     // Validate input--- if any case fails return user to index, include error message 
-    // in header (for debugging), and terminate script.
+    // in header, and terminate script.
 
     // Fields must not be empty
     if (empty($username) || empty($password) || empty($cpassword) || empty($firstName) || empty($lastName) || empty($email)) {
@@ -26,6 +26,12 @@ if (isset($_POST["submit"])) {
         header("Location:../signup.php?error=passwordmismatch");
         exit();
     }
+
+    // *** MORE VALIDATION TO ADD TO PREVENT SQL INJECTION:
+    // elseif Username must be alphanumeric only
+    // elseif Password must be (at least X# characters)
+    // elseif First name and last name must be letters only
+    // elseif Email must be correct format (using https://www.w3schools.com/php/filter_validate_email.asp or pattern matching w/ regex )
 
     // Username and email must not be duplicates
     else{
@@ -53,7 +59,7 @@ if (isset($_POST["submit"])) {
         }
         
         
-        // All inputs are valid--- insert user information into database and redirect user to login page
+        // All inputs are valid--- insert user information into database and redirect user to index.php to log in
         else{
             $stmt2 = $conn->prepare("INSERT INTO user (username, password, firstName, lastName, email) VALUES (?, ?, ?, ?, ?)");
             $stmt2->bind_param("sssss", $username, $password, $firstName, $lastName, $email);
@@ -74,4 +80,5 @@ if (isset($_POST["submit"])) {
     
 else{
     header("Location: ../signup.php");
+    exit();
 }

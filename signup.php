@@ -32,14 +32,14 @@
                         }
                     ?>
                     <form action="procedures/register.php" method="post">
-                    <input type="text" name="username" placeholder="Enter Username">
-                    <input type="password" name="password" placeholder="Enter Password">
-                    <input type="password" name="cpassword" placeholder="Confirm Password">
-                    <input type="text" name="firstName" placeholder="Enter First Name">
-                    <input type="text" name="lastName" placeholder="Enter Last Name">
-                    <input type="text" name="email" placeholder="Enter Email">
+                        <input type="text" name="username" placeholder="Enter Username">
+                        <input type="password" name="password" placeholder="Enter Password">
+                        <input type="password" name="cpassword" placeholder="Confirm Password">
+                        <input type="text" name="firstName" placeholder="Enter First Name">
+                        <input type="text" name="lastName" placeholder="Enter Last Name">
+                        <input type="text" name="email" placeholder="Enter Email">
 
-                    <button type="submit" name="submit" class="button">Register New User</button>
+                        <button type="submit" name="submit" class="button">Register New User</button>
                     </form>
                 <p>Already a user? <a href="index.php">Click here to log in!</p>
             </div>
