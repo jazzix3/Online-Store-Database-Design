@@ -30,17 +30,17 @@ if (isset($_POST["submit"])) {
     // Username and email must not be duplicates
     else{
         $stmt = $conn->prepare("SELECT username, email FROM user WHERE username=? OR email=?");
-        if ($conn->query($stmt2) !== TRUE) {
-            header("Location:../signup.php?error=sqlerror1");         
-            } 
         $stmt->bind_param("ss", $username, $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        $duplicates = mysqli_num_rows($result);
         
-        if ($duplicates > 0) {
+        if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['username'] == $username) {
+                if ($row['username'] == $username && $row['email'] == $email){
+                    header("Location:../signup.php?error=duplicateboth");
+                    exit();
+                }
+                elseif ($row['username'] == $username) {
                     header("Location:../signup.php?error=duplicateuser");
                     exit();
                 }
@@ -48,17 +48,14 @@ if (isset($_POST["submit"])) {
                     header("Location:../signup.php?error=duplicateemail");
                     exit();
                 }
+
             }
         }
+        
         
         // All inputs are valid--- insert user information into database and redirect user to login page
         else{
             $stmt2 = $conn->prepare("INSERT INTO user (username, password, firstName, lastName, email) VALUES (?, ?, ?, ?, ?)");
-
-            if ($conn->query($stmt2) !== TRUE) {
-                header("Location:../signup.php?error=sqlerror2");         
-                } 
-            
             $stmt2->bind_param("sssss", $username, $password, $firstName, $lastName, $email);
             $stmt2->execute();
 

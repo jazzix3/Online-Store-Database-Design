@@ -19,9 +19,8 @@ a:hover{
 }
 
 p.errormsg{
-    font-family: Roboto, sans-serif;
     font-size: 12px;
-    color:#ff9f1c
+    color:#ff9f1c;
 }
 
 .container{
@@ -46,9 +45,9 @@ p.errormsg{
 }
 
 .container .content h2{
-    font-size: 28px;
+    font-size: 26px;
+    color: #287271;
     text-transform: uppercase;
-    color: #f4a261
 }
 
 .container .content form input{
@@ -64,7 +63,7 @@ p.errormsg{
     width: 320px;
     background-color: #ffbf69;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -74,7 +73,7 @@ p.errormsg{
     width: 320px;
     background-color: #ff9f1c;
     padding: 10px;
-    font-size: 20px;
+    font-size: 18px;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -84,7 +83,7 @@ p.errormsg{
 
 .button-2{
     width: 200px;
-    background-color: #616161;
+    background-color: #287271;
     padding: 8px;
     font-size: 12px;
     color: #ffffff;
@@ -93,7 +92,7 @@ p.errormsg{
 }
 .button-2:hover{
     width: 200px;
-    background-color: #2ec4b6;
+    background-color: #616161;
     padding: 8px;
     font-size: 12px;
     color: #ffffff;

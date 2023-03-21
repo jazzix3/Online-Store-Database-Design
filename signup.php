@@ -12,6 +12,25 @@
         <div class = "container">
             <div class = "content">
                 <h2>Create an account</h2>
+                <?php
+                        if (isset($_GET["error"])){
+                            if($_GET["error"] == "emptyfields"){
+                                echo "<p class='errormsg'>Fields cannot be empty. Please try again. </p>";
+                            }
+                            if($_GET["error"] == "passwordmismatch"){
+                                echo "<p class='errormsg'>Passwords did not match. Please try again. </p>";
+                            }
+                            if($_GET["error"] == "duplicateuser"){
+                                echo "<p class='errormsg'>Username already exists. Please enter a different username.</p>";
+                            }
+                            if($_GET["error"] == "duplicateemail"){
+                                echo "<p class='errormsg'>Email already exists. Please enter a different email.</p>";
+                            }
+                            if($_GET["error"] == "duplicateboth"){
+                                echo "<p class='errormsg'>Both username and email already exist.<br>Please enter a different username and email.</p>";
+                            }
+                        }
+                    ?>
                     <form action="procedures/register.php" method="post">
                     <input type="text" name="username" placeholder="Enter Username">
                     <input type="password" name="password" placeholder="Enter Password">
