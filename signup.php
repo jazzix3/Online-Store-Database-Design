@@ -11,14 +11,14 @@
         <body>
         <div class = "container">
             <div class = "content">
-                <h2>Create an account</h2>
+                <h2>Sign up for an account</h2>
                 <?php
                         if (isset($_GET["error"])){
                             if($_GET["error"] == "emptyfields"){
-                                echo "<p class='errormsg'>Fields cannot be empty. Please try again. </p>";
+                                echo "<p class='errormsg'>Fields cannot be empty. Please try again.</p>";
                             }
                             if($_GET["error"] == "passwordmismatch"){
-                                echo "<p class='errormsg'>Passwords did not match. Please try again. </p>";
+                                echo "<p class='errormsg'>Passwords did not match. Please try again.</p>";
                             }
                             if($_GET["error"] == "duplicateuser"){
                                 echo "<p class='errormsg'>Username already exists. Please enter a different username.</p>";
@@ -28,6 +28,18 @@
                             }
                             if($_GET["error"] == "duplicateboth"){
                                 echo "<p class='errormsg'>Both username and email already exist.<br>Please enter a different username and email.</p>";
+                            }
+                            if($_GET["error"] == "passwordlength"){
+                                echo "<p class='errormsg'>Your password must be between 3 and 20 characters.</p>";
+                            }
+                            if($_GET["error"] == "alphanumericonly"){
+                                echo "<p class='errormsg'>Your username must only contain letters or numbers.</p>";
+                            }
+                            if($_GET["error"] == "lettersonly"){
+                                echo "<p class='errormsg'>Your first and last name must only contain letters.</p>";
+                            }
+                            if($_GET["error"] == "emailvalidation"){
+                                echo "<p class='errormsg'>Please enter a valid email.</p>";
                             }
                         }
                     ?>

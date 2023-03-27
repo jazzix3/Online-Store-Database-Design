@@ -28,10 +28,29 @@ if (isset($_POST["submit"])) {
     }
 
     // *** MORE VALIDATION TO ADD TO PREVENT SQL INJECTION:
-    // elseif Username must be alphanumeric only
-    // elseif Password must be (at least X# characters)
-    // elseif First name and last name must be letters only
-    // elseif Email must be correct format (using https://www.w3schools.com/php/filter_validate_email.asp or pattern matching w/ regex )
+    // Username must be alphanumeric only
+    elseif (!ctype_alnum($username)){
+        header("Location:../signup.php?error=alphanumericonly");
+        exit();
+    }
+
+    // Password must be between 3 and 20 characters (can't be under 3 or above 20 characters)
+    elseif (strlen($password) <= 3 || strlen($password) >= 20){
+        header("Location:../signup.php?error=passwordlength");
+        exit();
+    }
+
+    // First name and last name must be letters only
+    elseif (!ctype_alpha($firstName) && !ctype_alpha($lastName)){
+        header("Location:../signup.php?error=lettersonly");
+        exit();
+    }
+
+    // Email must be correct format (using https://www.w3schools.com/php/filter_validate_email.asp or pattern matching w/ regex)
+    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        header("Location:../signup.php?error=emailvalidation");
+        exit();
+    }
 
     // Username and email must not be duplicates
     else{
