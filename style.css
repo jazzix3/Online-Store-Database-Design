@@ -23,7 +23,7 @@ p.errormsg{
     color:#ff9f1c;
 }
 
-.container{
+.container-login{
     width: 400px;
     background-color: #ffffff;
     display: flex;
@@ -36,27 +36,47 @@ p.errormsg{
     padding:20px;
     padding-bottom: 60px;
     border-radius:20px;
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2)
 }
 
-.container .content h1{
+.container-login .content h1{
     font-size: 36px;
     color: #287271;
     text-transform: uppercase;
 }
 
-.container .content h2{
+.container-login .content h2{
     font-size: 26px;
     color: #287271;
     text-transform: uppercase;
 }
 
-.container .content form input{
+.container-login .content form input{
     background-color:#ebebeb;
     width: 300px;
     padding: 10px;
     border:none;
     border-radius: 5px;
     margin:5px;
+}
+
+.container-main{
+    min-height: 100vh;
+    min-width:400px;
+    width: 600px;
+    background-color: #ffffff;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    margin:auto;
+}
+
+.container-main .content{
+    display: inline-block;
+    justify-content: left;
+    text-align:left;
+    margin:auto;
 }
 
 .button{
@@ -100,3 +120,45 @@ p.errormsg{
     border-radius: 5px;
 }
 
+.button-3{
+    background-color: #287271;
+    float: right;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border:none;
+}
+.button-3:hover{
+    background-color: #ffbf69;
+    color: #ffffff;
+}
+
+
+.navbar {
+    background-color: #287271;
+    overflow: hidden;
+  }
+  
+
+  .navbar a {
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+
+  .navbar a:hover {
+    background-color: #ffbf69;
+    color: #ffffff;
+  }
+  
+
+  .navbar a.active {
+    background-color: #ff9f1c;
+    color: #ffffff;
+  }

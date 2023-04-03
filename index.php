@@ -13,7 +13,7 @@ session_start();
         </head>
 
         <body>
-            <div class = "container">
+            <div class = "container-login">
                 <div class = "content">
                     <h1> Welcome</h1>
                     <?php
@@ -35,6 +35,9 @@ session_start();
                             }
                             if($_GET["error"] == "loggedout"){
                                 echo "<p class='errormsg'>You have successfully logged out.</p>";
+                            }
+                            if($_GET["error"] == "initsuccess"){
+                                echo "<p class='errormsg'>The database has been initialized successfully!</p>";
                             }
                         }
                     ?>

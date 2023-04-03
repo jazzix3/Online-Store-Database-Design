@@ -9,7 +9,7 @@
         </head>
 
         <body>
-        <div class = "container">
+        <div class = "container-login">
             <div class = "content">
                 <h2>Sign up for an account</h2>
                 <?php
