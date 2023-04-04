@@ -54,12 +54,12 @@ if ($conn->query($itemTable) === false) {
 $reviewTable = "CREATE TABLE review (
     reviewId INT(10) AUTO_INCREMENT PRIMARY KEY,
     remark TEXT (255),
-    score VARCHAR(32),
+    score VARCHAR(10),
     reviewDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    username VARCHAR(255),
-    itemId INT,
-    FOREIGN KEY (username) REFERENCES user(username),
-    FOREIGN KEY (itemId) REFERENCES item(itemId));";
+    writtenBy VARCHAR(255),
+    forItem INT,
+    FOREIGN KEY (writtenBy) REFERENCES user(username),
+    FOREIGN KEY (forItem) REFERENCES item(itemId));";
 
 if ($conn->query($reviewTable) === false) {
     exit("Error creating review table: " . $conn->error);
@@ -84,7 +84,7 @@ $queries = array(
     ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Fashion', '400.00', '2023-03-13 10:30:00', 'lisa4'),
     ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home', '50.00', '2023-03-07 08:15:00', 'lisa4')",
 
-    "INSERT INTO review(remark, score, reviewDate, username, itemId) VALUES
+    "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
     ('Great phone. The battery lasts all day!', 'excellent', '2023-04-03 10:02:00', 'jane2', '1'),
     ('These headphones are fantastic! The noise cancelling is top notch!', 'excellent', '2023-04-02 18:34:00', 'john1', '2'),
     ('Amazing sound, however, not comfortable to wear for long periods of time.', 'good', '2023-04-04 16:00:00', 'alice5', '2'),
