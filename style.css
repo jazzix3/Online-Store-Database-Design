@@ -8,19 +8,17 @@ body{
     color:#616161;
 }
 
-a{
-    color: #2ec4b6;
-}
 
-a:hover{
-    background-color: #2ec4b6;
-    color:#ffffff;
-    text-decoration:none;
-}
 
-p.errormsg{
-    font-size: 12px;
-    color:#ff9f1c;
+.container-main{
+    min-height: 100vh;
+    min-width:400px;
+    width: 800px;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    margin:auto;
 }
 
 .container-login{
@@ -39,19 +37,7 @@ p.errormsg{
     box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.2)
 }
 
-.container-login .content h1{
-    font-size: 36px;
-    color: #287271;
-    text-transform: uppercase;
-}
-
-.container-login .content h2{
-    font-size: 26px;
-    color: #287271;
-    text-transform: uppercase;
-}
-
-.container-login .content form input{
+.content form input{
     background-color:#ebebeb;
     width: 300px;
     padding: 10px;
@@ -60,24 +46,88 @@ p.errormsg{
     margin:5px;
 }
 
-.container-main{
-    min-height: 100vh;
-    min-width:400px;
-    width: 600px;
-    background-color: #ffffff;
+textarea {
+    background-color:#ebebeb;
+    width: 300px;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+    margin:5px;
+    font-family: Roboto;
+}
+
+.content{
     display: inline-block;
     align-items: center;
     justify-content: center;
     text-align:center;
     margin:auto;
+    width: 95%;
 }
 
-.container-main .content{
-    display: inline-block;
-    justify-content: left;
-    text-align:left;
-    margin:auto;
+.search-results{
+    display:inline-block;
+    margin-top: 50px;
+    width: 100%;
 }
+
+
+
+.postItem-container {
+    display: flex;
+    justify-content: center;
+}
+
+.postItem-form {
+    text-align: left;
+    margin: 0 auto;
+}
+
+/* TEXT STYLES */
+
+h1{
+    font-size: 36px;
+    color: #287271;
+    text-align:center;
+}
+
+h2{
+    font-size: 26px;
+    color: #287271;
+    text-align:center;
+}
+
+
+a{
+    color: #2ec4b6;
+}
+
+a:hover{
+    background-color: #2ec4b6;
+    color:#ffffff;
+    text-decoration:none;
+}
+
+p.errormsg{
+    font-size: 12px;
+    color:#ff9f1c;
+}
+
+
+/* TABLE STYLES */
+table{
+    width: 100%;
+}
+
+th{
+    font-size: 16px;
+    font-weight:bolder;
+    color: #287271;
+}
+
+
+
+/* BUTTON STYLES */
 
 .button{
     width: 320px;
@@ -135,14 +185,14 @@ p.errormsg{
     color: #ffffff;
 }
 
-
+/* NAVIGATION */
 .navbar {
     background-color: #287271;
     overflow: hidden;
   }
   
 
-  .navbar a {
+.navbar a {
     float: left;
     color: #ffffff;
     text-align: center;
@@ -152,13 +202,14 @@ p.errormsg{
   }
   
 
-  .navbar a:hover {
+.navbar a:hover {
     background-color: #ffbf69;
     color: #ffffff;
   }
   
 
-  .navbar a.active {
+.navbar a.active {
     background-color: #ff9f1c;
     color: #ffffff;
   }
+
