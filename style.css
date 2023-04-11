@@ -83,6 +83,15 @@ textarea {
     margin: 0 auto;
 }
 
+select#category{
+    background-color:#ebebeb;
+    width: 320px;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+    margin:5px;
+}
+
 /* TEXT STYLES */
 
 h1{

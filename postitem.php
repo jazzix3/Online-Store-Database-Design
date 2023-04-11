@@ -34,7 +34,7 @@ require("procedures/dbconnect.php");
                 <?php
                         if (isset($_GET["error"])){
                             if($_GET["error"] == "none"){
-                                echo "<p class='errormsg'>New user was registered successfully! </p>";
+                                echo "<p class='errormsg'>New item was posted successfully!</p>";
                             }
                             if($_GET["error"] == "reachedlimit"){
                                 echo "<p class='errormsg'>Unable to post item. You have reached the limit of 3 posts per day. </p>";
@@ -50,8 +50,20 @@ require("procedures/dbconnect.php");
                             <label for="description">Description: </label><br>
                             <textarea name="description" rows="5" cols="40" required></textarea><br><br>
 
-                            <label for="category">Category: </label><br>
-                            <input name="category" type="text" required><br><br>
+                            <label for="category">Category:</label><br>
+                            <select id="category" name="category" required>
+                                <option value="Art & Collectibles">Art & Collectibles</option>
+                                <option value="Baby & Kids">Baby & Kids</option>
+                                <option value="Clothing & Accessories">Clothing & Accessories</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Home & Garde">Home & Garde</option>
+                                <option value="Pet Supplies">Pet Supplies</option>
+                                <option value="Sporting Goods">Sporting Goods</option>
+                                <option value="Toys">Toys</option>
+                                <option value="Other">Other</option>
+                            </select><br><br>
+                            
 
                             <label for="price">Price: </label><br>
                             <input name="price" type="number" min="0" step="0.01" required><br><br>
