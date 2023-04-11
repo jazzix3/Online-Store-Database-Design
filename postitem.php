@@ -57,7 +57,7 @@ require("procedures/dbconnect.php");
                                 <option value="Clothing & Accessories">Clothing & Accessories</option>
                                 <option value="Electronics">Electronics</option>
                                 <option value="Furniture">Furniture</option>
-                                <option value="Home & Garde">Home & Garde</option>
+                                <option value="Home & Garden">Home & Garden</option>
                                 <option value="Pet Supplies">Pet Supplies</option>
                                 <option value="Sporting Goods">Sporting Goods</option>
                                 <option value="Toys">Toys</option>

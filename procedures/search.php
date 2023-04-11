@@ -12,10 +12,11 @@ if (isset($_POST["submit"])) {
     
     $category = $_POST["category"];
 
-    $search = mysqli_real_escape_string($conn, $category);
-    $sql = "SELECT * FROM item WHERE category LIKE '%$search%'";
-    $result = mysqli_query($conn, $sql);
-
+    $stmt = $conn->prepare("SELECT * FROM item WHERE category = ?");
+    $stmt->bind_param("s", $category);
+    $stmt->execute();
+    $result = $stmt->get_result();
+  
     $queryResult = mysqli_num_rows($result);
 
     if(queryResult > 0){
@@ -27,17 +28,8 @@ if (isset($_POST["submit"])) {
         }
         echo "No results found for '". $category. "'";
     }
-
-
-
-
-
-
 }
-
 else{
     header("Location: ../home.php");
     exit();
 }
-
-

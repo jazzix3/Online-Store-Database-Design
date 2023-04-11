@@ -92,6 +92,8 @@ select#category{
     margin:5px;
 }
 
+
+
 /* TEXT STYLES */
 
 h1{
@@ -193,6 +195,7 @@ th{
     background-color: #ffbf69;
     color: #ffffff;
 }
+
 
 /* NAVIGATION */
 .navbar {
