@@ -41,7 +41,7 @@ $itemTable = "CREATE TABLE IF NOT EXISTS item (
     category VARCHAR(64) NOT NULL,
     FOREIGN KEY (category) REFERENCES itemCategory(category),
     price DECIMAL(10,2),
-    postDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    postDate DATE NOT NULL DEFAULT (CURRENT_DATE),
     postedBy VARCHAR(32) NOT NULL,
     FOREIGN KEY (postedBy) REFERENCES user(username));";
 
@@ -55,7 +55,7 @@ $reviewTable = "CREATE TABLE review (
     reviewId INT(10) AUTO_INCREMENT PRIMARY KEY,
     remark TEXT (255),
     score VARCHAR(10),
-    reviewDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    reviewDate DATE NOT NULL DEFAULT (CURRENT_DATE),
     writtenBy VARCHAR(32) NOT NULL,
     FOREIGN KEY (writtenBy) REFERENCES user(username),
     forItem INT(10) NOT NULL,
@@ -88,23 +88,23 @@ $queries = array(
         ('Other')",
     
     "INSERT INTO item(title, description, category, price, postDate, postedBy) VALUES
-        ('Smartphone 14 Pro', 'Newest phone with improved camera and battery life', 'Electronics', '800.00', '2023-03-03 10:00:00', 'john1'),
-        ('Wireless headphones', 'World-class combination of noise cancelling performance and premium comfort', 'Electronics', '275.00', '2023-03-30 12:00:00', 'jane2'),
-        ('Artisan Stand Mixer', 'Mix ingredients with ease using this powerful and stylish stand mixer', 'Home & Garden', '250.00', '2023-03-17 13:15:00', 'jane2'),
-        ('Mountain Bike', 'Full suspension mountain bike with 29-inch wheels', 'Sporting Goods', '1000.00', '2023-03-28 16:00:00', 'matt3'),
-        ('Vintage Watch', 'Mechanical wristwatch from the 1950s', 'Clothing & Accessories', '300.00', '2023-03-27 14:20:00', 'matt3'),
-        ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Clothing & Accessories', '400.00', '2023-03-13 10:30:00', 'lisa4'),
-        ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07 08:15:00', 'lisa4')",
+        ('Smartphone 14 Pro', 'Newest phone with improved camera and battery life', 'Electronics', '800.00', '2023-03-03', 'john1'),
+        ('Wireless headphones', 'World-class combination of noise cancelling performance and premium comfort', 'Electronics', '275.00', '2023-03-30', 'jane2'),
+        ('Artisan Stand Mixer', 'Mix ingredients with ease using this powerful and stylish stand mixer', 'Home & Garden', '250.00', '2023-03-17', 'jane2'),
+        ('Mountain Bike', 'Full suspension mountain bike with 29-inch wheels', 'Sporting Goods', '1000.00', '2023-03-28', 'matt3'),
+        ('Vintage Watch', 'Mechanical wristwatch from the 1950s', 'Clothing & Accessories', '300.00', '2023-03-27', 'matt3'),
+        ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Clothing & Accessories', '400.00', '2023-03-13', 'lisa4'),
+        ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07', 'lisa4')",
 
     "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
-        ('Great phone. The battery lasts all day!', 'excellent', '2023-04-03 10:02:00', 'jane2', '1'),
-        ('These headphones are fantastic! The noise cancelling is top notch!', 'excellent', '2023-04-02 18:34:00', 'john1', '2'),
-        ('Amazing sound, however, not comfortable to wear for long periods of time.', 'good', '2023-04-04 16:00:00', 'alice5', '2'),
-        ('I love my new mixer! I wish the bowl was larger.', 'good', '2023-04-01 11:45:00', 'lisa4', '3'),
-        ('Too loud and too heavy. Cookies turned out great though.', 'fair', '2023-04-01 20:25:00', 'matt3', '3'),
-        ('The suspension is terrible! Would not recommend it.', 'poor', '2023-04-02 18:58:00', 'john1', '4'),
-        ('Very cute, I got so many compliments.', 'excellent', '2023-04-03 08:24:00', 'jane2', '6'),
-        ('Broke after 2 months and difficult to clean. Avoid!', 'poor', '2023-04-04 16:30:00', 'alice5', '7')"
+        ('Great phone. The battery lasts all day!', 'excellent', '2023-04-03', 'jane2', '1'),
+        ('These headphones are fantastic! The noise cancelling is top notch!', 'excellent', '2023-04-02', 'john1', '2'),
+        ('Amazing sound, however, not comfortable to wear for long periods of time.', 'good', '2023-04-04', 'alice5', '2'),
+        ('I love my new mixer! I wish the bowl was larger.', 'good', '2023-04-01', 'lisa4', '3'),
+        ('Too loud and too heavy. Cookies turned out great though.', 'fair', '2023-04-01', 'matt3', '3'),
+        ('The suspension is terrible! Would not recommend it.', 'poor', '2023-04-02', 'john1', '4'),
+        ('Very cute, I got so many compliments.', 'excellent', '2023-04-03', 'jane2', '6'),
+        ('Broke after 2 months and difficult to clean. Avoid!', 'poor', '2023-04-04', 'alice5', '7')"
 
 );
 
