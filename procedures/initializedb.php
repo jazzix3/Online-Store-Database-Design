@@ -65,6 +65,17 @@ if ($conn->query($reviewTable) === false) {
     exit("Error creating review table: " . $conn->error);
 }
 
+// For Phase 3, buyers can add favorite sellers
+$favoriteTable = "CREATE TABLE favorite (
+    buyer VARCHAR(32) NOT NULL PRIMARY KEY,
+    FOREIGN KEY (seller) REFERENCES user(username),
+    seller VARCHAR(32) NOT NULL,
+    FOREIGN KEY (seller) REFERENCES user(username));";
+
+if ($conn->query($favoriteTable) === false) {
+    exit("Error creating review table: " . $conn->error);
+}
+
 
 
 $queries = array(

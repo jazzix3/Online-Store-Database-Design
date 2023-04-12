@@ -58,33 +58,49 @@ require("procedures/dbconnect.php");
                     if (isset($_POST["submit"])) {
                         
                         
-                    $category = $_POST["category"];
+                        $category = $_POST["category"];
 
-                    $stmt = $conn->prepare("SELECT * FROM item WHERE category = ?");
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                
-                    $queryResult = mysqli_num_rows($result);
-
-                    if($queryResult > 0){
-                        echo "<h3>".$queryResult." results found in '" .$category."':</h3>";
-                        while ($row = mysqli_fetch_assoc($result)){
-                            echo "<div class='item-container'>
-                            <h2>".$row['title']."</h2>
-                            <p>".$row['description']."</p>
-                            <p>Price: $".$row['price']."</p>
-                            <p>Posted by: " .$row['postedBy']. " on " .$row['postDate'] . "</p>                            
-                            </div>
-                            <hr>";  
-                        }  
-                    }
-                    else {
-                        while($row = mysqli_fetch_assoc($result)) {
-                            echo $queryResult. "results found!";
+                        $stmt = $conn->prepare("SELECT * FROM item WHERE category = ?");
+                        $stmt->bind_param("s", $category);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+                        
+                        $queryResult = mysqli_num_rows($result);
+                        
+                        if ($queryResult > 0) {
+                            echo "<h3>".$queryResult." results found in '".$category."':</h3>";
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<div class='item-container'>
+                                <h2>".$row['title']."</h2>
+                                <p>".$row['description']."</p>
+                                <p>Price: $".$row['price']."</p>
+                                <p>Posted by: ".$row['postedBy']." on ".date('F d, Y', strtotime($row['postDate']))."</p>";
+                        
+                                $stmt2 = $conn->prepare("SELECT COUNT(*) AS reviewCount FROM review WHERE forItem = ? GROUP BY forItem");
+                                $stmt2->bind_param("s", $row['itemId']);
+                                $stmt2->execute();
+                                $result2 = $stmt2->get_result();
+                        
+                                if ($result2->num_rows > 0) {
+                                    $row2 = $result2->fetch_assoc();
+                                    $reviewCount = $row2["reviewCount"];
+                                    if ($reviewCount == 1) {
+                                        echo $reviewCount." review";
+                                    }
+                                    else {
+                                        echo $reviewCount." reviews";
+                                    } 
+                                } 
+                                else {
+                                    echo "No reviews";
+                                }
+                                
+                                echo "</div><hr>";
+                            }
+                        } else {
+                            echo "No results found for '".$category."'";
                         }
-                        echo "No results found for '". $category. "'";
-                    }
+                        
                 }
                 else{
                     header("Location: ../home.php");
