@@ -64,23 +64,20 @@ require("procedures/dbconnect.php");
                         $stmt->bind_param("s", $category);
                         $stmt->execute();
                         $itemsResult = $stmt->get_result();
+                        
                         $numItems = mysqli_num_rows($itemsResult);
                         
                         if ($numItems> 0) {
-                            if ($numItems == 1){
-                                echo "<h3>".$numItems." result found in '" .$category."':</h3>";
-                            }
-                            else {
-                                    echo "<h3>".$numItems." results found in '" .$category."':</h3>";
-                            }
-                            
+
+                            echo "<h3>".$numItems." results found in '" .$category."':</h3>";
 
                                 while ($itemRow = mysqli_fetch_assoc($itemsResult)) {
-                                    $stmt2 = $conn->prepare("SELECT * FROM review WHERE forItem = ?");
+                                    $stmt2 = $conn->prepare("SELECT COUNT(*) AS reviewCount FROM review WHERE forItem = ?");                                   
                                     $stmt2->bind_param("s", $itemRow['itemId']);
                                     $stmt2->execute();
-                                    $reviewResult = $stmt2->get_result();
-                                    $numReviews = mysqli_num_rows($reviewResult);
+                                    $reviewsResult = $stmt2->get_result();
+                                    $reviewsRow = mysqli_fetch_assoc($reviewsResult);
+                                    $numReviews = $reviewsRow['reviewCount'];
 
                                     echo "<div class='item-container'>
                                         <h2>".$itemRow['title']." ( ";
@@ -99,9 +96,9 @@ require("procedures/dbconnect.php");
                                         <p>Price: $".$itemRow['price']."</p>
                                         <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>
                                         </div><hr>";
-                                }
+                            }
                         } else {
-                            echo "<h3>No results found for '".$category."'</h3>";
+                            echo "No results found for '".$category."'";
                         }
                         
                         

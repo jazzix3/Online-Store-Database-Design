@@ -108,6 +108,15 @@ select#category{
     text-align:left;
   }
 
+.review-container {
+    padding: 3px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left;
+}
 
 
 /* TEXT STYLES */
@@ -127,13 +136,16 @@ h2{
 
 a{
     color: #2ec4b6;
+    font-size: 16px;
 }
 
 a:hover{
-    background-color: #2ec4b6;
-    color:#ffffff;
-    text-decoration:none;
+    color:#2ec4b6;
+    font-size: 16px;
+    text-decoration:bold;
 }
+
+
 
 p.errormsg{
     font-size: 12px;
