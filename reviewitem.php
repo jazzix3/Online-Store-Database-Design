@@ -33,45 +33,35 @@ $itemId = $_GET["itemId"];
             </div>
 
             <div class="content">
-                <h2>Review an Item</h2>
                 <?php
-                        if (isset($_GET["error"])){
-                            if($_GET["error"] == "none"){
-                                echo "<p class='errormsg'>New review was posted successfully!</p>";
-                            }
-                            if($_GET["error"] == "reachedlimit"){
-                                echo "<p class='errormsg'>Unable to review item. You have reached the limit of 3 reviews per day. </p>";
-                            }
-                        }
+
+                    $stmt = $conn->prepare("SELECT title FROM item WHERE itemId = ?");
+                    $stmt->bind_param("s", $itemId);
+                    $stmt->execute();
+                    $itemResult = $stmt->get_result();
+                    $itemRow = mysqli_fetch_assoc($itemResult);
+
+                    echo "<h2>".$itemRow['title']."</h2>";
+            
                     ?>
-                <div class="postItem-container">
-                    <div class="postItem-form">
-                        <form action="procedures/post.php" method="post">
-                            <label for="title">Title: </label><br>
-                            <input name="title" type="text" required><br><br>
+                <div class="reviewItem-container">
+                    <div class="reviewItem-form">
+                        <form action="procedures/review.php" method="post">
+                            <input type="hidden" name="itemId" value="<?php echo (int) $itemId; ?>">
 
-                            <label for="description">Description: </label><br>
-                            <textarea name="description" rows="5" cols="40" required></textarea><br><br>
 
-                            <label for="category">Category:</label><br>
-                            <select id="category" name="category" required>
-                                <option value="Art & Collectibles">Art & Collectibles</option>
-                                <option value="Baby & Kids">Baby & Kids</option>
-                                <option value="Clothing & Accessories">Clothing & Accessories</option>
-                                <option value="Electronics">Electronics</option>
-                                <option value="Furniture">Furniture</option>
-                                <option value="Home & Garden">Home & Garden</option>
-                                <option value="Pet Supplies">Pet Supplies</option>
-                                <option value="Sporting Goods">Sporting Goods</option>
-                                <option value="Toys">Toys</option>
-                                <option value="Other">Other</option>
+                            <label for="remark">Remark: </label><br>
+                            <textarea name="remark" rows="5" cols="40" required></textarea><br><br>
+
+                            <label for="score">Score:</label><br>
+                            <select id="score" name="score" required>
+                                <option value="Excellent">Excellent</option>
+                                <option value="Good">Good</option>
+                                <option value="Fair">Fair</option>
+                                <option value="Poor">Poor</option>
                             </select><br><br>
-                            
 
-                            <label for="price">Price: </label><br>
-                            <input name="price" type="number" min="0" step="0.01" required><br><br>
-
-                            <button type="submit" class="button">Post Item</button>
+                            <button type="submit" class="button">Review Item</button>
                         </form>
                     </div> 
                 </div>

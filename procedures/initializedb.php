@@ -4,7 +4,7 @@ require ("dbconnect.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$tables = array("review", "item", "itemCategory", "user");
+$tables = array("review", "item", "itemCategory", "favorite", "user");
 foreach ($tables as $table) {
     $sql = "DROP TABLE IF EXISTS $table;";
     if ($conn->query($sql) === false) {
@@ -65,6 +65,7 @@ if ($conn->query($reviewTable) === false) {
     exit("Error creating review table: " . $conn->error);
 }
 
+
 // For Phase 3, buyers can add favorite sellers
 $favoriteTable = "CREATE TABLE favorite (
     buyer VARCHAR(32) NOT NULL PRIMARY KEY,
@@ -108,14 +109,14 @@ $queries = array(
         ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07', 'lisa4')",
 
     "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
-        ('Great phone. The battery lasts all day!', 'excellent', '2023-04-03', 'jane2', '1'),
-        ('These headphones are fantastic! The noise cancelling is top notch!', 'excellent', '2023-04-02', 'john1', '2'),
-        ('Amazing sound, however, not comfortable to wear for long periods of time.', 'good', '2023-04-04', 'alice5', '2'),
-        ('I love my new mixer! I wish the bowl was larger.', 'good', '2023-04-01', 'lisa4', '3'),
-        ('Too loud and too heavy. Cookies turned out great though.', 'fair', '2023-04-01', 'matt3', '3'),
-        ('The suspension is terrible! Would not recommend it.', 'poor', '2023-04-02', 'john1', '4'),
-        ('Very cute, I got so many compliments.', 'excellent', '2023-04-03', 'jane2', '6'),
-        ('Broke after 2 months and difficult to clean. Avoid!', 'poor', '2023-04-04', 'alice5', '7')"
+        ('Great phone. The battery lasts all day!', 'Excellent', '2023-04-03', 'jane2', '1'),
+        ('These headphones are fantastic! The noise cancelling is top notch!', 'Excellent', '2023-04-02', 'john1', '2'),
+        ('Amazing sound, however, not comfortable to wear for long periods of time.', 'Good', '2023-04-04', 'alice5', '2'),
+        ('I love my new mixer! I wish the bowl was larger.', 'Good', '2023-04-01', 'lisa4', '3'),
+        ('Too loud and too heavy. Cookies turned out great though.', 'Fair', '2023-04-01', 'matt3', '3'),
+        ('The suspension is terrible! Would not recommend it.', 'Poor', '2023-04-02', 'john1', '4'),
+        ('Very cute, I got so many compliments.', 'Excellent', '2023-04-03', 'jane2', '6'),
+        ('Broke after 2 months and difficult to clean. Avoid!', 'Poor', '2023-04-04', 'alice5', '7')"
 
 );
 

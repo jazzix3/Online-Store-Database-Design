@@ -66,24 +66,17 @@ textarea {
 
 
 
-.postItem-container {
+.postItem-container, .reviewItem-container {
     display: flex;
     justify-content: center;
 }
 
-.postItem-form {
+.postItem-form, .reviewItem-form {
     text-align: left;
     margin: 0 auto;
 }
 
-select#category{
-    background-color:#ebebeb;
-    width: 320px;
-    padding: 10px;
-    border:none;
-    border-radius: 5px;
-    margin:5px;
-}
+
 
 .search-results{
     display:inline-block;
@@ -169,7 +162,7 @@ th{
 
 
 
-/* BUTTON STYLES */
+/* BUTTON & FORM STYLES */
 
 .button{
     width: 320px;
@@ -227,6 +220,14 @@ th{
     color: #ffffff;
 }
 
+select{
+    background-color:#ebebeb;
+    width: 320px;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+    margin:5px;
+}
 
 
 

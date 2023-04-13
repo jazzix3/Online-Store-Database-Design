@@ -34,6 +34,14 @@ $itemId = $_GET["itemId"];
         
         <div class="search-results">
             <?php
+                if (isset($_GET["error"])){
+                    if($_GET["error"] == "none"){
+                        echo "<p class='errormsg'>New review was posted successfully!</p>";
+                    }
+                    else if($_GET["error"] == "reachedlimit"){
+                        echo "<p class='errormsg'>Unable to review item. You have reached the limit of 3 reviews per day. </p>";
+                    }
+                }
 
                 $stmt = $conn->prepare("SELECT * FROM item WHERE itemId = ?");
                 $stmt->bind_param("s", $itemId);
