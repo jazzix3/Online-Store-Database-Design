@@ -38,14 +38,13 @@ $itemId = $_GET["itemId"];
                 $stmt = $conn->prepare("SELECT * FROM item WHERE itemId = ?");
                 $stmt->bind_param("s", $itemId);
                 $stmt->execute();
-                $itemsResult = $stmt->get_result();
-                $itemRow = mysqli_fetch_assoc($itemsResult);
+                $itemResult = $stmt->get_result();
+                $itemRow = mysqli_fetch_assoc($itemResult);
 
-                $stmt2 = $conn->prepare("SELECT * FROM review WHERE forItem = ?");                                   
+                $stmt2 = $conn->prepare("SELECT * FROM review WHERE forItem = ? ORDER BY reviewDate DESC");                                   
                 $stmt2->bind_param("s", $itemRow['itemId']);
                 $stmt2->execute();
                 $reviewResult = $stmt2->get_result();
-                $reviewRow = mysqli_fetch_assoc($reviewResult);
                 $numReviews = mysqli_num_rows($reviewResult);
 
                 echo "<h2>".$itemRow['title']." ( ";
@@ -62,16 +61,34 @@ $itemId = $_GET["itemId"];
                     echo " )</h2>
                     <p>".$itemRow['description']."</p>
                     <p>Price: $".$itemRow['price']."</p>
-                    <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>";
+                    <p>Category: ".$itemRow['category']."</p>
+                    <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>
+                    
+                    <p><a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button' style='text-decoration: none; display:inline-block'>Write a review</a></p>
+                    ";
             ?>
                 
-                    <form action="procedures/post.php" method="post">
-                    <button type="submit" class="button">Write a review</button>
+                    
         </div>
 
         <div class="review-container">
             <?php
+                if ($numReviews > 0) {
+                        while ($reviewRow = mysqli_fetch_assoc($reviewResult)) {
+                            echo "<div class='item-container'>
+                            <h2>".$reviewRow['writtenBy']." <span style='font-size:12px'> on ".date('F d, Y', strtotime($reviewRow['reviewDate']))."</span></h2>
+                            
+                            <p>Score: ".$reviewRow['score']."</p>
+                            <p><i>'".$reviewRow['remark']."'</i></p>
+                            </div><hr>";
 
+                        }
+
+                }
+
+                else{
+                    echo "<h3>Be the first to review!";
+                }
 
                  
             ?>
@@ -80,3 +97,5 @@ $itemId = $_GET["itemId"];
     </div>
 </body>
 </html>
+
+

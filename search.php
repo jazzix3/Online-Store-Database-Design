@@ -63,8 +63,8 @@ require("procedures/dbconnect.php");
                         $stmt = $conn->prepare("SELECT * FROM item WHERE category = ?");
                         $stmt->bind_param("s", $category);
                         $stmt->execute();
-                        $itemsResult = $stmt->get_result();
-                        $numItems = mysqli_num_rows($itemsResult);
+                        $itemResult = $stmt->get_result();
+                        $numItems = mysqli_num_rows($itemResult);
                         
                         if ($numItems> 0) {
                             if ($numItems == 1){
@@ -75,7 +75,7 @@ require("procedures/dbconnect.php");
                             }
                             
 
-                                while ($itemRow = mysqli_fetch_assoc($itemsResult)) {
+                                while ($itemRow = mysqli_fetch_assoc($itemResult)) {
                                     $stmt2 = $conn->prepare("SELECT * FROM review WHERE forItem = ?");
                                     $stmt2->bind_param("s", $itemRow['itemId']);
                                     $stmt2->execute();
