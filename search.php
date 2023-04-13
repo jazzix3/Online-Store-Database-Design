@@ -83,19 +83,18 @@ require("procedures/dbconnect.php");
                                     $numReviews = mysqli_num_rows($reviewResult);
 
                                     echo "<div class='item-container'>
-                                        <h2>".$itemRow['title']." ( ";
+                                         <a href='reviews.php?itemId=" .$itemRow['itemId'] . "'>" .$itemRow['title']. " ( ";
                                         if ($numReviews > 0) {
                                             if ($numReviews == 1) {
-                                                echo "<a href='reviews.php?itemId=" . $itemRow['itemId'] . "'>" . $numReviews . " review</a>";
+                                                echo $numReviews . " review )</a>";
                                             } else {
-                                                echo "<a href='reviews.php?itemId=" . $itemRow['itemId'] . "'>" . $numReviews . " reviews</a>";
+                                                echo $numReviews . " reviews )</a>";
                                             } 
                                         } else {
-                                            echo "<a href='reviews.php?itemId=" . $itemRow['itemId'] . "'>No reviews</a>";
+                                            echo  "No reviews )";
                                         }
                                                                 
-                                    echo " )</h2>
-                                        <p>".$itemRow['description']."</p>
+                                    echo "<p>".$itemRow['description']."</p>
                                         <p>Price: $".$itemRow['price']."</p>
                                         <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>
                                         </div><hr>";

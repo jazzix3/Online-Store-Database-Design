@@ -130,12 +130,14 @@ h2{
 a{
     color: #2ec4b6;
     font-size: 16px;
+    text-decoration:none
 }
 
 a:hover{
     color:#2ec4b6;
     font-size: 16px;
-    text-decoration:bold;
+    font-weight:bolder;
+    text-decoration:underline;
 }
 
 
