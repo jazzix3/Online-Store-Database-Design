@@ -33,6 +33,8 @@ if (isset($_GET["itemId"])){
             </form>
         </div>
         
+        <div class="content">
+        
         <div class="search-results">
             <?php
                 if (isset($_GET["error"])){ ;
@@ -78,7 +80,8 @@ if (isset($_GET["itemId"])){
                     <p>Category: ".$itemRow['category']."</p>
                     <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>
                     
-                    <p><a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button' style='text-decoration: none; display:inline-block'>Write a review</a></p>
+                    <p><a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button' style='display:inline-block'>Write a review</a>
+                    <a href='seller.php?postedBy=" . $itemRow['postedBy'] . "'class='button' style='display:inline-block'>View seller</a></p>
                     ";
             ?>
                 
@@ -106,7 +109,8 @@ if (isset($_GET["itemId"])){
 
                  
             ?>
-        </div>    
+        </div>
+            </div>    
         
     </div>
 </body>
