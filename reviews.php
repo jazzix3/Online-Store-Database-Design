@@ -89,7 +89,7 @@ if (isset($_GET["itemId"])){
             <?php
                 if ($numReviews > 0) {
                         while ($reviewRow = mysqli_fetch_assoc($reviewResult)) {
-                            echo "<div class='item-container'>
+                            echo "<div class='item-container' style='display:inline-block'>
                             <h2>".$reviewRow['writtenBy']." <span style='font-size:12px'> on ".date('F d, Y', strtotime($reviewRow['reviewDate']))."</span></h2>
                             
                             <p>Score: ".$reviewRow['score']."</p>

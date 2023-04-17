@@ -83,7 +83,7 @@ require("procedures/dbconnect.php");
                                     $numReviews = mysqli_num_rows($reviewResult);
 
                                     echo "<div class='item-container'>
-                                         <a href='reviews.php?itemId=" .$itemRow['itemId'] . "'>" .$itemRow['title']. " ( ";
+                                         <div class='left-column'><a href='reviews.php?itemId=" .$itemRow['itemId'] . "'>" .$itemRow['title']. " ( ";
                                         if ($numReviews > 0) {
                                             if ($numReviews == 1) {
                                                 echo $numReviews . " review )</a>";
@@ -91,12 +91,19 @@ require("procedures/dbconnect.php");
                                                 echo $numReviews . " reviews )</a>";
                                             } 
                                         } else {
-                                            echo  "No reviews )";
+                                            echo  "No reviews )</a>";
                                         }
                                                                 
                                     echo "<p>".$itemRow['description']."</p>
                                         <p>Price: $".$itemRow['price']."</p>
                                         <p style='font-size:12px'>Posted by: ".$itemRow['postedBy']." on ".date('F d, Y', strtotime($itemRow['postDate']))."</p>
+                                        </div>
+                                        
+                                        <div class='right-column'>
+                                        <a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button-4'>Write a review</a>
+                                        </div>
+
+                                        
                                         </div><hr>";
                                 }
                         } else {
