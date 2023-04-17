@@ -4,7 +4,7 @@ require ("dbconnect.php");
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-$tables = array("review", "item", "itemCategory", "favorite", "user");
+$tables = array("favorite", "review", "item", "itemCategory", "user");
 foreach ($tables as $table) {
     $sql = "DROP TABLE IF EXISTS $table;";
     if ($conn->query($sql) === false) {
@@ -68,10 +68,10 @@ if ($conn->query($reviewTable) === false) {
 
 // For Phase 3, buyers can add favorite sellers
 $favoriteTable = "CREATE TABLE favorite (
-    buyer VARCHAR(32) NOT NULL PRIMARY KEY,
-    FOREIGN KEY (seller) REFERENCES user(username),
+    buyer VARCHAR(32) NOT NULL,
+    FOREIGN KEY (buyer) REFERENCES user(username),
     seller VARCHAR(32) NOT NULL,
-    FOREIGN KEY (seller) REFERENCES user(username));";
+    FOREIGN KEY (seller) REFERENCES item(postedBy));";
 
 if ($conn->query($favoriteTable) === false) {
     exit("Error creating review table: " . $conn->error);

@@ -41,6 +41,9 @@ if (isset($_GET["postedBy"])){
                     if($_GET["error"] == "none"){
                         echo "<p class='errormsg'>Seller was added to your favorites</p>";
                     }
+                    else if($_GET["error"] == "duplicate"){
+                        echo "<p class='errormsg'>Seller is in your favorites already</p>";
+                    }
                     else if($_GET["error"] == "sameuser"){
                         echo "<p class='errormsg'>Cannot add yourself to favorites</p>";
                     }

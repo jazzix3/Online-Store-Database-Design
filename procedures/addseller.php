@@ -21,23 +21,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../seller.php?" . $query_string);
     }
 
-    /*
-    else {
-        $remark = $_POST["remark"];
-        $score = $_POST["score"];
-        $itemId = $_POST["itemId"];
-    
-        $stmt = $conn->prepare("INSERT INTO review (remark, score, writtenBy, forItem ) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $remark, $score, $username, $itemId);
+    $stmt = $conn->prepare("SELECT * FROM favorite WHERE buyer = ? AND seller = ?");
+    $stmt->bind_param("ss", $username, $postedBy);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $query_string = http_build_query(array('postedBy' => $postedBy, 'error' => 'duplicate'));
+        header("Location: ../seller.php?" . $query_string);
+        exit();
+    }
+
+    else {    
+        $stmt = $conn->prepare("INSERT INTO favorite (buyer, seller) VALUES (?, ?)");
+        $stmt->bind_param("ss", $username, $postedBy);
 
         if ($stmt->execute()) {
-            $query_string = http_build_query(array('itemId' => $itemId, 'error' => 'none'));
-            header("Location: ../reviews.php?" . $query_string);
+            $query_string = http_build_query(array('postedBy' => $postedBy, 'error' => 'none'));
+            header("Location: ../seller.php?" . $query_string);
             exit();   
         } else {
             echo "Error inserting data: " . $conn->error;
         }
-    }*/
+    }
 }
 
 ?>
