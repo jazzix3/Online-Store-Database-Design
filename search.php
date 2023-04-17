@@ -100,7 +100,8 @@ require("procedures/dbconnect.php");
                                         </div>
                                         
                                         <div class='right-column'>
-                                        <a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button-4'>Write a review</a>
+                                        <p><a href='reviewitem.php?itemId=" . $itemRow['itemId'] . "'class='button-4'>Write a review</a></p>
+                                        <p><a href='seller.php?postedBy=" . $itemRow['postedBy'] . "'class='button-4'>View seller</a></p>
                                         </div>
 
                                         

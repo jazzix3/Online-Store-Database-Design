@@ -218,7 +218,7 @@ th{
 }
 
 .button-4{
-    width: 180px;
+    width: 125px;
     background-color: #ffbf69;
     padding: 10px;
     font-size: 14px;
@@ -228,10 +228,11 @@ th{
     margin:10px;
     text-align:center;
     text-decoration:none;
+    display:block;
     
 }
 .button-4:hover{
-    width: 150px;
+    width: 125px;
     background-color: #ff9f1c;
     padding: 10px;
     font-size: 14px;
@@ -241,6 +242,7 @@ th{
     margin:10px;
     text-align:center;
     text-decoration:none;
+    display:block;
 }
 
 
