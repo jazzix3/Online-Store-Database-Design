@@ -4,6 +4,7 @@ session_start();
 // If user is not logged in, redirect to index.php to log in
 if (!isset($_SESSION["username"])){
     header("Location: index.php?error=invalidsession");
+    
     exit();
 }
 
@@ -49,6 +50,14 @@ if (!isset($_SESSION["username"])){
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
+                
+            <p>
+                Logged in as
+                <strong>
+                    <?php echo $_SESSION['username']; ?>
+                </strong>
+            </p>
+
             </div>
 
             </div>
