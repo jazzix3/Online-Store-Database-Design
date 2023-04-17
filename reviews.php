@@ -9,9 +9,10 @@ if (!isset($_SESSION["username"])){
 
 require("procedures/dbconnect.php");
 
-$itemId = $_GET["itemId"];
+if (isset($_GET["itemId"])){ 
+    $itemId = $_GET["itemId"];
+}
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -34,12 +35,17 @@ $itemId = $_GET["itemId"];
         
         <div class="search-results">
             <?php
-                if (isset($_GET["error"])){
+                if (isset($_GET["error"])){ ;
                     if($_GET["error"] == "none"){
                         echo "<p class='errormsg'>New review was posted successfully!</p>";
                     }
                     else if($_GET["error"] == "reachedlimit"){
                         echo "<p class='errormsg'>Unable to review item. You have reached the limit of 3 reviews per day. </p>";
+                        exit();
+                    }
+                    else if($_GET["error"] == "sameuser"){
+                        echo "<p class='errormsg'>Unable to review your own listing. </p>";
+                        exit();
                     }
                 }
 
