@@ -9,6 +9,11 @@ if (!isset($_SESSION["username"])){
 
 require("procedures/dbconnect.php");
 
+if (!isset($_GET["itemId"])) {
+    header("Location: home.php");
+    exit();
+}
+
 if (isset($_GET["itemId"])){ 
     $itemId = $_GET["itemId"];
 }
@@ -42,12 +47,10 @@ if (isset($_GET["itemId"])){
                         echo "<p class='errormsg'>New review was posted successfully!</p>";
                     }
                     else if($_GET["error"] == "reachedlimit"){
-                        echo "<p class='errormsg'>Unable to review item. You have reached the limit of 3 reviews per day. </p>";
-                        exit();
+                        echo "<p class='errormsg'>Unable to review item. You reached the limit of 3 reviews per day. </p>";
                     }
                     else if($_GET["error"] == "sameuser"){
                         echo "<p class='errormsg'>Unable to review your own listing. </p>";
-                        exit();
                     }
                 }
 
@@ -62,6 +65,8 @@ if (isset($_GET["itemId"])){
                 $stmt2->execute();
                 $reviewResult = $stmt2->get_result();
                 $numReviews = mysqli_num_rows($reviewResult);
+
+                
 
                 echo "<h2>".$itemRow['title']." ( ";
                     if ($numReviews > 0) {
