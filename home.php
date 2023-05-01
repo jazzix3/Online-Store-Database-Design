@@ -24,6 +24,7 @@ if (!isset($_SESSION["username"])){
         <div class="navbar">
             <a class="active" href="home.php">Search</a>
             <a href="postitem.php">Post</a>
+            <a href="lists.php">Lists</a>
             <form action="procedures/logout.php" method="post">
                 <button type="submit" class="button-3">Log out</button>                
             </form>
@@ -31,6 +32,12 @@ if (!isset($_SESSION["username"])){
 
 
         <div class="content">
+            <p>
+                Logged in as
+                <strong>
+                    <?php echo $_SESSION['username']; ?>
+                </strong>
+            </p>
             <h2>Search for an item</h2>
             
             <div class="search-form">
@@ -50,14 +57,6 @@ if (!isset($_SESSION["username"])){
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
-                
-            <p>
-                Logged in as
-                <strong>
-                    <?php echo $_SESSION['username']; ?>
-                </strong>
-            </p>
-
             </div>
 
             </div>

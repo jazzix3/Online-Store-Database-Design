@@ -27,6 +27,7 @@ $itemId = $_GET["itemId"];
             <div class="navbar">
                 <a class="active" href="home.php">Search</a>
                 <a href="postitem.php">Post</a>
+                <a href="list.php">Lists</a>
                 <form action="procedures/logout.php" method="post">
                     <button type="submit" class="button-3">Log out</button>                
                 </form>

@@ -24,6 +24,7 @@ require("procedures/dbconnect.php");
             <div class="navbar">
                 <a href="home.php">Search</a>
                 <a class="active" href="postitem.php">Post</a>
+                <a href="lists.php">Lists</a>
                 <form action="procedures/logout.php" method="post">
                     <button type="submit" class="button-3">Log out</button>                
                 </form>
