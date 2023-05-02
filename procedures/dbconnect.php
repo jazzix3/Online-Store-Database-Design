@@ -1,9 +1,9 @@
 <?php
 // *** Change this to your server info***
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $password = "mysql";
-$dbname = "Comp440Project";
+$dbname = "COMP440";
 
 // Create connection and display error if connection fails
 $conn = new mysqli($servername, $username, $password, $dbname);
