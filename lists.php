@@ -63,30 +63,34 @@ require("procedures/dbconnect.php");
                 if (isset($_POST['submit'])) {
                     $case = $_POST['case'];
                 
-                    if ($case == 1) {
-                        // List most expensive items in each category   
-                        $sql = "SELECT category, title, price FROM item 
-                                WHERE (category, price) 
-                                IN (SELECT category, MAX(price) FROM item
-                                    GROUP BY category) ";
-                        $result = mysqli_query($conn, $sql);
+                    switch ($case) {
+                        case "1":
+                            // List most expensive items in each category   
+                            $sql = "SELECT category, title, price FROM item 
+                                    WHERE (category, price) 
+                                    IN (SELECT category, MAX(price) FROM item
+                                        GROUP BY category) ";
+                            $result = mysqli_query($conn, $sql);
 
-                        echo "<div class='list-container'><table>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                </tr>";
-                        
-                                while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr><td>".$row["title"]."</td><td>".$row["category"]."</td><td>".$row["price"]."</td></tr>";
-                        }
-                        echo "</table></div>";
-                    }
-
-                    elseif ($case == 2) {
-                        //Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y
-                        echo "test";
+                            echo "<div class='list-container'><table>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                    </tr>";
+                            
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr><td>".$row["title"]."</td><td>".$row["category"]."</td><td>".$row["price"]."</td></tr>";
+                            }
+                            echo "</table></div>";
+                            break;
+                    
+                        case "2":
+                            //Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y
+                            //$sql = " ";
+                            //$result = mysqli_query($conn, $sql);
+                            echo "test";
+                        break;
 
                     }
                 }
