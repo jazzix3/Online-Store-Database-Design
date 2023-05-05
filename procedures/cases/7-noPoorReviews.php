@@ -1,16 +1,4 @@
-<?php
-require("procedures/dbconnect.php");
 
-$sql = "SELECT writtenBy, score, remark FROM review
-        WHERE writtenBy NOT IN (
-            SELECT writtenBy FROM review
-            WHERE score = 'Poor'
-            GROUP BY writtenBy
-            )";
-
-$result = mysqli_query($conn, $sql);
-
-?>
 
 <div class='list-container'>
     <h3><center>Users who never posted a "poor" review</center></h3><br>
