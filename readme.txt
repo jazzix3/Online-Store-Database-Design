@@ -1,7 +1,7 @@
 COMP 440 Database Design Project - Spring 2023
 
 Demo Videos
-[Phase 1](https://www.youtube.com/watch?v=EPruG3VR8EA) || [Phase 2] || [Phase 3]
+[Phase 1](https://www.youtube.com/watch?v=EPruG3VR8EA) || [Phase 2](https://www.youtube.com/watch?v=LldwphqJ_pw)  || [Phase 3]
 
 
 Group #36 Contributions
