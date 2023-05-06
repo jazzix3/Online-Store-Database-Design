@@ -58,7 +58,6 @@ if (isset($_GET["postedBy"])){
         
             <div class="search-results">
                 <?php
-                    
 
                 $stmt = $conn->prepare("SELECT * FROM item WHERE postedBy = ?");
                 $stmt->bind_param("s", $postedBy);
@@ -101,7 +100,40 @@ if (isset($_GET["postedBy"])){
                 } else {
                     echo "<h3>No items are for sale at the moment.</h3>";
                 }
-                ?>
+
+                
+                $stmt2 = $conn->prepare("SELECT * FROM review WHERE writtenBy = ?");
+                $stmt2->bind_param("s", $postedBy);
+                $stmt2->execute();
+                $reviewResult = $stmt2->get_result();
+                $numReviews = mysqli_num_rows($reviewResult);
+                
+                echo "<br><br><h2>" .$postedBy. "'s reviews</h2> <div class='review-container'>" ;
+                
+                if ($numReviews > 0) {
+                    while ($reviewRow = mysqli_fetch_assoc($reviewResult)) {
+                        $stmt3 = $conn->prepare("SELECT title FROM item WHERE itemId = ?");
+                        $stmt3->bind_param("s", $reviewRow['forItem']);
+                        $stmt3->execute();
+                        $itemResult = $stmt3->get_result();
+                        $itemRow = mysqli_fetch_assoc($itemResult);
+                        
+                        echo "<div class='item-container' style='display:inline-block'>
+                              <h2>".$itemRow['title']." <span style='font-size:12px'> on ".date('F d, Y', strtotime($reviewRow['reviewDate']))."</span></h2>
+                              <p>Score: ".$reviewRow['score']."</p>
+                              <p><i>'".$reviewRow['remark']."'</i></p>
+                              </div><hr>";
+                    }
+                }
+                else{
+                    echo "<h3>".$postedBy. " has not written any reviews</h3>";
+                }
+                
+
+                 
+            ?>
+        </div>
+                
             </div>
         </div>
     </div>
