@@ -59,6 +59,17 @@ if (!isset($_SESSION["username"])){
                 </form>
             </div>
 
+            <br><br><h2>Search for a seller</h2>
+
+            <div class="search-form">
+                <form action="seller.php" method="get">
+                    <input type="text" name="seller" placeholder="Enter username">
+                    <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px;">🔎</button>
+                </form>
+
+
+
+
             </div>
 
         </div>

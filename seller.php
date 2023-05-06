@@ -12,6 +12,13 @@ require("procedures/dbconnect.php");
 if (isset($_GET["postedBy"])){ 
     $postedBy = $_GET["postedBy"];
 }
+
+if (isset($_GET['seller'])) {
+    $seller = $_GET['seller'];
+
+    $postedBy= $seller;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -98,7 +105,7 @@ if (isset($_GET["postedBy"])){
                                 </div><hr>";
                         }
                 } else {
-                    echo "<h3>No items are for sale at the moment.</h3>";
+                    echo "<h3>".$postedBy. " has no items for sale at the moment</h3>";
                 }
 
                 
