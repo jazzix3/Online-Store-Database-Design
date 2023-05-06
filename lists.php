@@ -67,6 +67,38 @@ require("procedures/dbconnect.php");
                         case "1": // Most expensive items in each category  
                             include("procedures/cases/1-mostExpensiveInCategory.php");
                             break;
+                        case "2": // Atleast two items posted on the same day, category X and Y
+                            echo "<div class='forms'>                            
+                            <form action='2items.php' method='post'>
+                                    <select id='category1' name='category1' required>
+                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='Art & Collectibles'>Art & Collectibles</option>
+                                        <option value='Baby & Kids'>Baby & Kids</option>
+                                        <option value='Clothing & Accessories'>Clothing & Accessories</option>
+                                        <option value='Electronics'>Electronics</option>
+                                        <option value='Furniture'>Furniture</option>
+                                        <option value='Home & Garden'>Home & Garden</option>
+                                        <option value='Pet Supplies'>Pet Supplies</option>
+                                        <option value='Sporting Goods'>Sporting Goods</option>
+                                        <option value='Toys'>Toys</option>
+                                        <option value='Other'>Other</option>
+                                    </select>
+                                    <select id='category2' name='category2' required>
+                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='Art & Collectibles'>Art & Collectibles</option>
+                                        <option value='Baby & Kids'>Baby & Kids</option>
+                                        <option value='Clothing & Accessories'>Clothing & Accessories</option>
+                                        <option value='Electronics'>Electronics</option>
+                                        <option value='Furniture'>Furniture</option>
+                                        <option value='Home & Garden'>Home & Garden</option>
+                                        <option value='Pet Supplies'>Pet Supplies</option>
+                                        <option value='Sporting Goods'>Sporting Goods</option>
+                                        <option value='Toys'>Toys</option>
+                                        <option value='Other'>Other</option>
+                                    </select>
+                            <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
+                            </div>";
+                            //include("procedures/cases/2-itemsSameDayXY.php");
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;

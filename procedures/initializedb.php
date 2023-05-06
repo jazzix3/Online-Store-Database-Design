@@ -114,7 +114,8 @@ $queries = array(
         ('Vintage Watch', 'Mechanical wristwatch from the 1950s', 'Clothing & Accessories', '300.00', '2023-03-27', 'matt3'),
         ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Clothing & Accessories', '400.00', '2023-03-13', 'lisa4'),
         ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07', 'lisa4'),
-        ('Baby Stroller', 'Folding stroller with adjustable handlebars and locking wheels', 'Baby & Kids', '175.00', '2023-04-07', 'lisa4')",
+        ('Ripped Jeans', 'Sylish, trendy baggy ripped jeans', 'Clothing & Accessories', '30.00', '2023-03-07', 'lisa4')",
+
 
     "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
         ('Great phone. The battery lasts all day!', 'Excellent', '2023-04-03', 'jane2', '1'),
