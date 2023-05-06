@@ -15,7 +15,6 @@ if (isset($_GET["postedBy"])){
 
 if (isset($_GET['seller'])) {
     $seller = $_GET['seller'];
-
     $postedBy= $seller;
 }
 
@@ -58,10 +57,11 @@ if (isset($_GET['seller'])) {
                 }
             ?>
 
-            <form action="procedures/addseller.php" method="post">
-                <input type="hidden" name="postedBy" value="<?php echo $postedBy; ?>">
-                <button type="submit" name="submit" class="button">Add seller to favorites</button>
-            </form>
+        <form action="procedures/addseller.php" method="post">
+            <input type="hidden" name="postedBy" value="<?php echo $postedBy; ?>">
+            <input type="hidden" name="seller" value="<?php echo $seller; ?>">
+            <button type="submit" name="submit" class="button">Add seller to favorites</button>
+        </form>
         
             <div class="search-results">
                 <?php

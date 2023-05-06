@@ -12,17 +12,19 @@ require("dbconnect.php");
 $username = $_SESSION["username"];
 
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $postedBy = $_POST["postedBy"];
+    $seller = $_POST["seller"];
 
-    if ($username == $postedBy) {
+    if ($username == $postedBy || $username == $seller) {
         $query_string = http_build_query(array('postedBy' => $postedBy, 'error' => 'sameuser'));
         header("Location: ../seller.php?" . $query_string);
     }
 
-    $stmt = $conn->prepare("SELECT * FROM favorite WHERE buyer = ? AND seller = ?");
-    $stmt->bind_param("ss", $username, $postedBy);
+    $stmt = $conn->prepare("SELECT * FROM favorite WHERE buyer = ? AND (seller = ? OR seller = ?)");
+    $stmt->bind_param("sss", $username, $postedBy, $seller);
     $stmt->execute();
     $result = $stmt->get_result();
 
