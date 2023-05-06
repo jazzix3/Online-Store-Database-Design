@@ -67,10 +67,15 @@ require("procedures/dbconnect.php");
                         case "1": // Most expensive items in each category  
                             include("procedures/cases/1-mostExpensiveInCategory.php");
                             break;
+                        case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
+                            include("procedures/cases/4-postedMostItems.php");
+                            break;
                         case "7": // Users who never posted a "poor" review
                             include("procedures/cases/7-noPoorReviews.php");
                             break;
-
+                        case "8": // Users who posted some reviews, but each of them is "poor"
+                            include("procedures/cases/8-poorReviewsOnly.php");
+                            break;
                     }
                 }
 

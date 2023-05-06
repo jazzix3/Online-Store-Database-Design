@@ -1,6 +1,7 @@
-<?php
+<?php   
 require("procedures/dbconnect.php");
 
+// Most expensive items in each category
 $sql = "SELECT category, title, price 
         FROM item 
         WHERE (category, price) IN 
@@ -9,26 +10,24 @@ $sql = "SELECT category, title, price
 
 $result = mysqli_query($conn, $sql);
 
-?>
 
-<div class='list-container'>
-    <h3><center>Most expensive items in each category</center></h3><br>
-    <table>
-        <tr>
-            <th>Category</th>
-            <th>Item</th>
-            <th>Price</th>
-        </tr>
-
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+echo "<div class='list-container'>
+        <h3>Most expensive items in each category</h3><br>
+        <table>
             <tr>
-                <td><?php echo $row["category"]; ?></td>
-                <td><?php echo $row["title"]; ?></td>
-                <td><?php echo $row["price"]; ?></td>
-            </tr>
-        <?php } ?>
+                <th>Category</th>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>";
 
-    </table>
-</div>
+while ($row = mysqli_fetch_assoc($result)) {
+echo "      <tr>
+                <td>".$row["category"]."</td>
+                <td>".$row["title"]."</td>
+                <td>".$row["price"]."</td>
+            </tr>";
+}
+echo "</table></div>";
 
-<?php mysqli_close($conn);?>
+mysqli_close($conn);
+?>
