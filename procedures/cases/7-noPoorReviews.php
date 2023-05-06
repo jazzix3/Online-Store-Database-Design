@@ -1,23 +1,32 @@
+<?php   
+require("procedures/dbconnect.php");
+
+// Users who never posted a "poor" review
+$sql = "SELECT writtenBy, score, remark FROM review
+                                    WHERE writtenBy 
+                                    NOT IN (SELECT writtenBy FROM review
+                                            WHERE score = ('Poor')
+                                            GROUP BY writtenBy) ";
+$result = mysqli_query($conn, $sql);
 
 
-<div class='list-container'>
-    <h3><center>Users who never posted a "poor" review</center></h3><br>
-    <table>
-        <tr>
-            <th>User</th>
-            <th>Score</th>
-            <th>Remark</th>
-        </tr>
-
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+echo "<div class='list-container'>
+        <h3>Users who never posted a 'poor' review</h3>
+        <table>
             <tr>
-                <td><?php echo $row["writtenBy"] ?></td>
-                <td><?php echo $row["score"] ?></td>
-                <td><?php echo $row["remark"] ?></td>
-            </tr>
-        <?php } ?>
+                <th>User</th>
+                <th>Title</th>
+                <th>Review</th>
+            </tr>";
 
-    </table>
-</div>
+while ($row = mysqli_fetch_assoc($result)) {
+echo "      <tr>
+                <td>".$row["writtenBy"]."</td>
+                <td>".$row["score"]."</td>
+                <td>".$row["remark"]."</td>
+            </tr>";
+}
+echo "</table></div>";
 
-<?php mysqli_close($conn); ?>
+mysqli_close($conn);
+?>

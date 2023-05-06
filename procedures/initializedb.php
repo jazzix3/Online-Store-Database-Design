@@ -66,12 +66,14 @@ if ($conn->query($reviewTable) === false) {
 }
 
 
-// For Phase 3, buyers can add favorite sellers
+
 $favoriteTable = "CREATE TABLE favorite (
+    favoriteId INT(10) AUTO_INCREMENT PRIMARY KEY,
     buyer VARCHAR(32) NOT NULL,
     FOREIGN KEY (buyer) REFERENCES user(username),
     seller VARCHAR(32) NOT NULL,
-    FOREIGN KEY (seller) REFERENCES item(postedBy));";
+    FOREIGN KEY (seller) REFERENCES user(username));";
+
 
 if ($conn->query($favoriteTable) === false) {
     exit("Error creating review table: " . $conn->error);
@@ -86,6 +88,11 @@ $queries = array(
         ('matt3', 'p@ssword3', 'Matt', 'Garcia', 'jason.garcia@example.com'),
         ('lisa4', 'p@ssword4', 'Lisa', 'Kim', 'lisa.kim@example.com'),
         ('alice5', 'p@ssword5', 'Alice', 'Williams', 'alice.williams@example.com')",
+
+    "INSERT INTO favorite (buyer, seller) VALUES
+        ('john1', 'jane2'), ('john1', 'matt3'), ('john1', 'lisa4'),
+        ('jane2', 'matt3'), ('jane2', 'lisa4'), ('jane2', 'alice5'),
+        ('matt3', 'john1'), ('matt3', 'jane2')",
 
     "INSERT INTO itemCategory(category) VALUES
         ('Art & Collectibles'),
@@ -109,15 +116,22 @@ $queries = array(
         ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07', 'lisa4'),
         ('Ripped Jeans', 'Sylish, trendy baggy ripped jeans', 'Clothing & Accessories', '30.00', '2023-03-07', 'lisa4')",
 
+
     "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
         ('Great phone. The battery lasts all day!', 'Excellent', '2023-04-03', 'jane2', '1'),
         ('These headphones are fantastic! The noise cancelling is top notch!', 'Excellent', '2023-04-02', 'john1', '2'),
         ('Amazing sound, however, not comfortable to wear for long periods of time.', 'Good', '2023-04-04', 'alice5', '2'),
-        ('I love my new mixer! I wish the bowl was larger.', 'Good', '2023-04-01', 'lisa4', '3'),
+        ('I love my new mixer! I wish the bowl was larger.', 'Good', '2023-04-01', 'jane2', '3'),
         ('Too loud and too heavy. Cookies turned out great though.', 'Fair', '2023-04-01', 'matt3', '3'),
         ('The suspension is terrible! Would not recommend it.', 'Poor', '2023-04-02', 'john1', '4'),
         ('Very cute, I got so many compliments.', 'Excellent', '2023-04-03', 'jane2', '6'),
-        ('Broke after 2 months and difficult to clean. Avoid!', 'Poor', '2023-04-04', 'alice5', '7')"
+        ('Broke after 2 months and difficult to clean. Avoid!', 'Poor', '2023-04-04', 'alice5', '7'),
+        ('Perfect size and color. I use it every day. ', 'Excellent', '2023-04-04', 'alice5', '6'),
+        ('Not worth the price', 'Poor', '2023-04-04', 'lisa4', '2')"
+
+    
+
+
 
 );
 

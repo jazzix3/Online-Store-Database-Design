@@ -4,10 +4,10 @@ session_start();
 // If user is not logged in, redirect to index.php to log in
 if (!isset($_SESSION["username"])){
     header("Location: index.php?error=invalidsession");
-    
     exit();
 }
 
+require("procedures/dbconnect.php");
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +59,33 @@ if (!isset($_SESSION["username"])){
                 </form>
             </div>
 
+            <br><br><h2>Search for a seller</h2>
+
+            <div class="search-form">
+                <form action="seller.php" method="get">
+                    <input type="text" name="seller" placeholder="Enter username">
+                    <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px;">🔎</button>
+                </form>
             </div>
+
+
+            <br><br><h2>My favorite sellers</h2>
+            <?php 
+                $stmt = $conn->prepare("SELECT seller FROM favorite WHERE buyer = ?");
+                $stmt->bind_param("s", $_SESSION["username"]);
+                $stmt->execute();
+                $favoriteResult = $stmt->get_result();
+
+                if (mysqli_num_rows($favoriteResult) > 0) {
+                    while ($favorite = mysqli_fetch_assoc($favoriteResult)) {
+                        echo "<a href='seller.php?postedBy=" . $favorite['seller'] . "'>" . $favorite['seller'] . "</a><br>";
+                    }
+                } else {
+                    echo "You have no favorite sellers.";
+                }
+            ?>
+
+
 
         </div>
     </div>
