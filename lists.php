@@ -41,13 +41,13 @@ require("procedures/dbconnect.php");
                         <option value="" disabled selected>Select a special case</option>
                         <option value="1">1- Most expensive items in each category</option>
                         <option value="2">2- Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y</option>
-                        <option value="3">3- Items posted by user X, such that all the comments are "Excellent" or "good" for these items</option>
+                        <option value="3">3- Items posted by user X with only "excellent" or "good" reviews for these items</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
                         <option value="5">5- Other users who are favorited by both users X, and Y </option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
                         <option value="7">7- Users who never posted a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
-                        <option value="9">9- Users whose items never gained poor reviews or any reviews at all</option>
+                        <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
                         <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
@@ -68,6 +68,7 @@ require("procedures/dbconnect.php");
                             include("procedures/cases/1-mostExpensiveInCategory.php");
                             break;
                         case "2": // Atleast two items posted on the same day, category X and Y
+                            //include("procedures/cases/2-itemsSameDayXY.php");
                             echo "<div class='forms'>                            
                             <form action='2items.php' method='post'>
                                     <select id='category1' name='category1' required>
@@ -98,7 +99,10 @@ require("procedures/dbconnect.php");
                                     </select>
                             <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
                             </div>";
-                            //include("procedures/cases/2-itemsSameDayXY.php");
+                            break;
+                        case "3": // Items posted by user X with only "excellent" or "good" reviews for these items
+                            include("procedures/cases/3-excellentOrGoodReviewsOnly.php");
+                            break;
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;
@@ -133,7 +137,9 @@ require("procedures/dbconnect.php");
                         case "8": // Users who posted some reviews, but each of them is "poor"
                             include("procedures/cases/8-poorReviewsOnly.php");
                             break;
-                            case "9": // Users whose items never gained poor reviews or any reviews at all
+                        case "9": // Users whose items never gained poor reviews or any reviews at all
+                            include("procedures/cases/9-noPoorItems.php");
+                            break;
                     }
                 }
 
