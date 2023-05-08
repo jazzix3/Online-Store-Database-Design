@@ -41,7 +41,7 @@ require("procedures/dbconnect.php");
                         <option value="" disabled selected>Select a special case</option>
                         <option value="1">1- Most expensive items in each category</option>
                         <option value="2">2- Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y</option>
-                        <option value="3">3- Items posted by user X with only "excellent" or "good" reviews for these items</option>
+                        <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
                         <option value="5">5- Other users who are favorited by both users X, and Y </option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
@@ -100,9 +100,20 @@ require("procedures/dbconnect.php");
                             <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
                             </div>";
                             break;
-                        case "3": // Items posted by user X with only "excellent" or "good" reviews for these items
-                            include("procedures/cases/3-excellentOrGoodReviewsOnly.php");
-                            break;
+                            case "3": // Items posted by user X with only "excellent" or "good" reviews
+                                echo "  <div class='content'>
+                                            <div class='list-container'>
+                                                <h3>Items posted by user X with only 'excellent' or 'good' reviews</h3>
+                                            </div>
+                                            <div class='search-form'>
+                                                <form action='3-ItemUserExellentOrGoodReview.php' method='post'>
+                                                    <input type='text' name='selected_user' placeholder='Enter username'>
+                                                    <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px;'>🔎</button>
+                                                </form>
+                                            </div>
+                                        </div>";
+                                break;
+                              
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;
