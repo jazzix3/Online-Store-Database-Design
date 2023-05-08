@@ -102,6 +102,28 @@ require("procedures/dbconnect.php");
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;
+                        case "5":
+                            echo "<div class='forms'>                            
+                            <form action='commonfav.php' method='post'>
+                                    <select id='category1' name='category1' required>
+                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='alice5'>alice5</option>
+                                        <option value='jane2'>jane2</option>
+                                        <option value='john1'>john1</option>
+                                        <option value='lisa4'>lisa4</option>
+                                        <option value='matt3'>matt3</option>
+                                    </select>
+                                    <select id='category2' name='category2' required>
+                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='alice5'>alice5</option>
+                                        <option value='jane2'>jane2</option>
+                                        <option value='john1'>john1</option>
+                                        <option value='lisa4'>lisa4</option>
+                                        <option value='matt3'>matt3</option>
+                                    </select>
+                            <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
+                            </div>";
+                            break;
                         case "7": // Users who never posted a "poor" review
                             include("procedures/cases/7-noPoorReviews.php");
                             break;
