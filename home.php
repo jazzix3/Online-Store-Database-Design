@@ -57,19 +57,19 @@ require("procedures/dbconnect.php");
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
-            </div>
+            </div><br><hr>
 
-            <br><br><h2>Search for a seller</h2>
+            <h2>Search for a seller</h2>
 
             <div class="search-form">
                 <form action="seller.php" method="get">
                     <input type="text" name="seller" placeholder="Enter username">
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px;">🔎</button>
                 </form>
-            </div>
+            </div><br><hr>
 
 
-            <br><br><h2>My favorite sellers</h2>
+            <br><h2>My favorite sellers</h2>
             <?php 
                 $stmt = $conn->prepare("SELECT seller FROM favorite WHERE buyer = ?");
                 $stmt->bind_param("s", $_SESSION["username"]);

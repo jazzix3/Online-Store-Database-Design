@@ -1,7 +1,7 @@
 # COMP 440 Database Design Project - Spring 2023
 
 ### Demo Videos
-[Phase 1](https://www.youtube.com/watch?v=EPruG3VR8EA) || [Phase 2](https://www.youtube.com/watch?v=LldwphqJ_pw) || [Phase 3]
+[Phase 1](https://www.youtube.com/watch?v=EPruG3VR8EA) || [Phase 2](https://www.youtube.com/watch?v=LldwphqJ_pw) || Phase 3 - Live demo
 
 
 ###  Group #36 Contributions
@@ -16,10 +16,12 @@
 - Implemented features to validate user input and to prevent SQL injections
 - Helped with testing and debugging
 - Ensured all phase requirements were met
+- Solved SQL statements for Phase 3 prompts
 
 **Summayah:**
 - Helped with testing and debugging
 - Recorded videos to demonstrate functionality
+- Solved SQL statements for Phase 3 prompts
 
 
 ### Requirements
