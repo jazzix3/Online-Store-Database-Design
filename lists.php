@@ -44,10 +44,10 @@ require("procedures/dbconnect.php");
                         <option value="3">3- Items posted by user X, such that all the comments are "Excellent" or "good" for these items</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
                         <option value="5">5- Other users who are favorited by both users X, and Y </option>
-                        <option value="6">6- Users who never posted any "excellent" items</option>
+                        <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
                         <option value="7">7- Users who never posted a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
-                        <option value="9">9- Users such that each item they posted so far never received any "poor" reviews</option>
+                        <option value="9">9- Users whose items never gained poor reviews or any reviews at all</option>
                         <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
@@ -124,12 +124,16 @@ require("procedures/dbconnect.php");
                             <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
                             </div>";
                             break;
+                        case "6": // Users whose items never gained 3 or more excellent reviews
+                            include("procedures/cases/6-noExcellentItems.php");
+                            break;
                         case "7": // Users who never posted a "poor" review
                             include("procedures/cases/7-noPoorReviews.php");
                             break;
                         case "8": // Users who posted some reviews, but each of them is "poor"
                             include("procedures/cases/8-poorReviewsOnly.php");
                             break;
+                            case "9": // Users whose items never gained poor reviews or any reviews at all
                     }
                 }
 
