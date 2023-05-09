@@ -40,10 +40,10 @@ require("procedures/dbconnect.php");
                     <select id="case" name="case" required>
                         <option value="" disabled selected>Select a special case</option>
                         <option value="1">1- Most expensive items in each category</option>
-                        <option value="2">2- Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y</option>
+                        <option value="2">2- Users who posted >= two items on the same day in two categories</option>
                         <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
-                        <option value="5">5- Other users who are favorited by both users X, and Y </option>
+                        <option value="5">5- Users who have favorite sellers in common</option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
                         <option value="7">7- Users who never posted a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
@@ -67,10 +67,11 @@ require("procedures/dbconnect.php");
                         case "1": // Most expensive items in each category  
                             include("procedures/cases/1-mostExpensiveInCategory.php");
                             break;
-                        case "2": // Atleast two items posted on the same day, category X and Y
-                            //include("procedures/cases/2-itemsSameDayXY.php");
-                            echo "<div class='forms'>                            
-                            <form action='2items.php' method='post'>
+                        case "2": // Users who posted >= two items on the same day in two categories
+                            echo "<div class='list-container'>
+                            <h3>Users who posted >= two items on the same day in two categories</h3>
+                            <div class='forms'><center>                            
+                            <form action='2-itemsSameDayTwoCategories.php' method='post'>
                                     <select id='category1' name='category1' required>
                                         <option value='' disabled selected>Select a category</option>
                                         <option value='Art & Collectibles'>Art & Collectibles</option>
@@ -96,7 +97,7 @@ require("procedures/dbconnect.php");
                                         <option value='Sporting Goods'>Sporting Goods</option>
                                         <option value='Toys'>Toys</option>
                                         <option value='Other'>Other</option>
-                                    </select>
+                                    </center></select>
                             <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px; '>🔎</button>
                             </div>";
                             break;
@@ -106,8 +107,8 @@ require("procedures/dbconnect.php");
                                                 <h3>Items posted by user X with only 'excellent' or 'good' reviews</h3>
                                             </div>
                                             <div class='search-form'>
-                                                <form action='3-ItemUserExellentOrGoodReview.php' method='post'>
-                                                    <input type='text' name='selected_user' placeholder='Enter username'>
+                                                <form action='3-itemUserExellentOrGoodReview.php' method='post'>
+                                                    <input type='text' name='selected_user' placeholder='Enter username' required>
                                                     <button type='submit' name='submitC' class='button' style='width:50px; font-size: 14px;'>🔎</button>
                                                 </form>
                                             </div>
@@ -117,9 +118,11 @@ require("procedures/dbconnect.php");
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;
-                        case "5":
-                            echo "<div class='forms'>                            
-                            <form action='commonfav.php' method='post'>
+                        case "5": // Users who have favorite sellers in common
+                            echo "<div class='list-container'>
+                            <h3>Users who have favorite sellers in common</h3>
+                            <div class='forms'><center>                             
+                            <form action='5-usersCommonFavorites.php' method='post'>
                                     <select id='category1' name='category1' required>
                                         <option value='' disabled selected>Select a category</option>
                                         <option value='alice5'>alice5</option>

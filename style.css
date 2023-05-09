@@ -286,13 +286,21 @@ textarea {
 
 select{
     background-color:#ebebeb;
-    width: 320px;
+    width: 300px;
     padding: 10px;
     border:none;
     border-radius: 5px;
     margin:5px;
 }
 
+.list-container select{
+    background-color:#ebebeb;
+    width: 200px;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+    margin:5px;
+}
 
 
 

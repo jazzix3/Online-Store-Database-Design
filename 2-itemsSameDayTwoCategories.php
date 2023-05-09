@@ -32,7 +32,29 @@ require("procedures/dbconnect.php");
         </div>
 
         <div class="content">
-            <h2>Users who posted at least two items that are posted on the same day, one has a category of X, and another has a category of Y</h2>
+            <h2>Lists of items and users by special cases</h2>
+
+            <div class="search-form" >
+                <form action="lists.php" method="post">
+                    <select id="case" name="case" required>
+                        <option value="" disabled selected>Select a special case</option>
+                        <option value="1">1- Most expensive items in each category</option>
+                        <option value="2">2- Users who posted >= two items on the same day in two categories</option>
+                        <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
+                        <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
+                        <option value="5">5- Users who have favorite sellers in common</option>
+                        <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
+                        <option value="7">7- Users who never posted a "poor" review</option>
+                        <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
+                        <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
+                        <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
+                    </select>
+                    <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
+                </form>
+            </div>
+
+        <div class='list-container'>
+            <h3>Users who posted >= two items on the same day in two categories</h3>
             <?php
                 $category1 = $_POST['category1'];
                 $category2 = $_POST['category2'];
