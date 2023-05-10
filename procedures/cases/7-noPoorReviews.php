@@ -1,7 +1,7 @@
 <?php   
 require("procedures/dbconnect.php");
 
-// Users who never posted a "poor" review
+// Users who never wrote a "poor" review
 $sql = "SELECT writtenBy, score, remark FROM review
                                     WHERE writtenBy 
                                     NOT IN (SELECT writtenBy FROM review
@@ -11,7 +11,7 @@ $result = mysqli_query($conn, $sql);
 
 
 echo "<div class='list-container'>
-        <h3>Users who never posted a 'poor' review</h3>
+        <h3>Users who never wrote a 'poor' review</h3>
         <table>
             <tr>
                 <th>User</th>

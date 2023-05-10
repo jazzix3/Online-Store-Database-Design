@@ -42,19 +42,19 @@ require("procedures/dbconnect.php");
                         <option value="2">2- Users who posted >= two items on the same day in two categories</option>
                         <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
-                        <option value="5">5- Users who have favorite sellers in common</option>
+                        <option value="5">5- Sellers who are favorited by a pair of users </option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
-                        <option value="7">7- Users who never posted a "poor" review</option>
+                        <option value="7">7- Users who never wrote a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
                         <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
-                        <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
+                        <option value="10">10- Pairs of users who gave each other "excellent" reviews for every item they posted</option>   
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
             </div>
 
         <div class='list-container'>
-            <h3>Users who have favorite sellers in common</h3>
+            <h3>Sellers who are favorited by a pair of users</h3>
             <h2></h2>
             <?php
                 $category1 = $_POST['category1'];

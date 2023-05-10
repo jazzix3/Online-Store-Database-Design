@@ -37,12 +37,12 @@ require("procedures/dbconnect.php");
                         <option value="2">2- Users who posted >= two items on the same day in two categories</option>
                         <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
-                        <option value="5">5- Users who have favorite sellers in common</option>
+                        <option value="5">5- Sellers who are favorited by a pair of users</option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
-                        <option value="7">7- Users who never posted a "poor" review</option>
+                        <option value="7">7- Users who never wrote a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
                         <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
-                        <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
+                        <option value="10">10- Pairs of users who gave each other "excellent" reviews for every item they posted</option>   
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
@@ -57,7 +57,7 @@ require("procedures/dbconnect.php");
                 }
 
                 // Items posted by user X with only "excellent" or "good" reviews
-                $sql = "SELECT i.postedBy, i.title, r.remark
+                $sql = "SELECT i.postedBy, i.title, r.score
                     FROM item i
                     JOIN review r ON i.itemId = r.forItem
                     WHERE postedBy = '$selected_user'
@@ -69,24 +69,24 @@ require("procedures/dbconnect.php");
                         GROUP BY i2.itemId
                         HAVING COUNT(*) > 0)
                     AND r.score IN ('Excellent', 'Good')
-                    GROUP BY i.postedBy, i.title, r.remark";
+                    GROUP BY i.postedBy, i.title, r.score";
 
                 $result = mysqli_query($conn, $sql);
             ?>
             
-            <h3>Items posted by <?php echo $selected_user ?> with only \"excellent\" or \"good\" reviews</h3>
+            <h3>Items posted by <?php echo $selected_user ?> with only 'excellent' or 'good' reviews</h3>
             <table>
                     <tr>
                         <th>User</th>
-                        <th>Good/Excellent Review</th>
-                        <th>Remark</th>
+                        <th>Item</th>
+                        <th>Score</th>
                     </tr>
                                     
                     <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                         <tr>
                             <td><?php echo $row["postedBy"]; ?></td>
                             <td><?php echo $row["title"]; ?></td>
-                            <td><?php echo $row["remark"]; ?></td>
+                            <td><?php echo $row["score"]; ?></td>
 
                         </tr>
                     <?php } ?>

@@ -17,7 +17,8 @@ $sql = "SELECT i1.postedBy
 $result = mysqli_query($conn, $sql);
 
 echo "<div class='list-container'>
-        <h3>User whose items never gained poor reviews or any reviews at all</h3>";
+        <h3>User whose items never gained poor reviews or any reviews at all</h3>
+        <table>";
                             
 while ($row = mysqli_fetch_assoc($result)) {
          echo "<tr><td>".$row["postedBy"]."</td><td>";

@@ -87,12 +87,13 @@ $queries = array(
         ('jane2', 'p@ssword2', 'Jane', 'Doe', 'jane.doe@example.com'),
         ('matt3', 'p@ssword3', 'Matt', 'Garcia', 'jason.garcia@example.com'),
         ('lisa4', 'p@ssword4', 'Lisa', 'Kim', 'lisa.kim@example.com'),
-        ('alice5', 'p@ssword5', 'Alice', 'Williams', 'alice.williams@example.com')",
+        ('alice5', 'p@ssword5', 'Alice', 'Williams', 'alice.williams@example.com'),
+        ('james6', 'p@ssword6', 'James', 'Lee', 'james.lee@example.com')",
 
     "INSERT INTO favorite (buyer, seller) VALUES
         ('john1', 'jane2'), ('john1', 'matt3'), ('john1', 'lisa4'),
         ('jane2', 'matt3'), ('jane2', 'lisa4'), ('jane2', 'alice5'),
-        ('matt3', 'john1'), ('matt3', 'jane2')",
+        ('matt3', 'john1'), ('matt3', 'jane2'), ('lisa4', 'john1')",
 
     "INSERT INTO itemCategory(category) VALUES
         ('Art & Collectibles'),
@@ -107,30 +108,29 @@ $queries = array(
         ('Other')",
     
     "INSERT INTO item(title, description, category, price, postDate, postedBy) VALUES
-        ('Smartphone 14 Pro', 'Newest phone with improved camera and battery life', 'Electronics', '800.00', '2023-03-03', 'john1'),
+        ('Smartphone 14 Pro', 'Newest phone with improved camera and battery life', 'Electronics', '500.00', '2023-03-03', 'john1'),
         ('Wireless headphones', 'World-class combination of noise cancelling performance and premium comfort', 'Electronics', '275.00', '2023-03-30', 'jane2'),
-        ('Artisan Stand Mixer', 'Mix ingredients with ease using this powerful and stylish stand mixer', 'Home & Garden', '250.00', '2023-03-17', 'jane2'),
-        ('Mountain Bike', 'Full suspension mountain bike with 29-inch wheels', 'Sporting Goods', '1000.00', '2023-03-28', 'matt3'),
-        ('Vintage Watch', 'Mechanical wristwatch from the 1950s', 'Clothing & Accessories', '300.00', '2023-03-27', 'matt3'),
-        ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Clothing & Accessories', '400.00', '2023-03-13', 'lisa4'),
-        ('Coffee Maker', 'Programmable coffee machine with thermal carafe', 'Home & Garden', '50.00', '2023-03-07', 'lisa4'),
-        ('Ripped Jeans', 'Sylish, trendy baggy ripped jeans', 'Clothing & Accessories', '30.00', '2023-03-07', 'lisa4')",
+        ('Artisan Stand Mixer', 'Mix ingredients with ease using this powerful and stylish stand mixer', 'Home & Garden', '150.00', '2023-03-17', 'jane2'),
+        ('Mountain Bike', 'Full suspension mountain bike with 29-inch wheels', 'Sporting Goods', '800.00', '2023-03-28', 'matt3'),
+        ('Vintage Watch', 'Mechanical wristwatch from the 1950s', 'Clothing & Accessories', '300.00', '2023-03-28', 'matt3'),
+        ('Leather Shoulder Bag', 'Womens crossbody bag with adjustable strap', 'Clothing & Accessories', '75.00', '2023-03-30', 'lisa4'),
+        ('Ripped Jeans', 'Sylish, trendy baggy ripped jeans', 'Clothing & Accessories', '30.00', '2023-03-07', 'alice5'),
+        ('Movie Posters', 'Large posters from 90s movies', 'Art & Collectibles', '80.00', '2023-04-07', 'james6'),
+        ('Stroller', 'Easy-folding stroller with locking wheels', 'Baby & Kids', '120.00', '2023-04-07', 'james6'),
+        ('Baby Crib', 'Wooden crib with rounded edges and made with non-harmful finishes', 'Baby & Kids', '215.00', '2023-04-24', 'james6')",
 
 
     "INSERT INTO review(remark, score, reviewDate, writtenBy, forItem) VALUES
-        ('Great phone. The battery lasts all day!', 'Excellent', '2023-04-03', 'jane2', '1'),
-        ('These headphones are fantastic! The noise cancelling is top notch!', 'Excellent', '2023-04-02', 'john1', '2'),
-        ('Amazing sound, however, not comfortable to wear for long periods of time.', 'Good', '2023-04-04', 'alice5', '2'),
-        ('I love my new mixer! I wish the bowl was larger.', 'Good', '2023-04-01', 'jane2', '3'),
-        ('Too loud and too heavy. Cookies turned out great though.', 'Fair', '2023-04-01', 'matt3', '3'),
-        ('The suspension is terrible! Would not recommend it.', 'Poor', '2023-04-02', 'john1', '4'),
-        ('Very cute, I got so many compliments.', 'Excellent', '2023-04-03', 'jane2', '6'),
-        ('Broke after 2 months and difficult to clean. Avoid!', 'Poor', '2023-04-04', 'alice5', '7'),
-        ('Perfect size and color. I use it every day. ', 'Excellent', '2023-04-04', 'alice5', '6'),
-        ('Not worth the price', 'Poor', '2023-04-04', 'lisa4', '2')"
-
-    
-
+        ('Great phone. The battery lasts all day!', 'Excellent', '2023-05-03', 'jane2', '1'),
+        ('These headphones are fantastic! It blocks out all noise.', 'Excellent', '2023-05-02', 'john1', '2'),
+        ('It is easy to use and looks great on my kitchen counters.', 'Excellent', '2023-05-01', 'john1', '3'),
+        ('Amazing quality leather!', 'Excellent', '2023-04-10', 'jane2', '6'),
+        ('Perfect for every day because it goes with anything.', 'Excellent', '2023-04-12', 'lisa4', '6'),
+        ('Too loud and I wish the bowl was bigger.', 'Poor', '2023-03-29', 'lisa4', '3'), 
+        ('Love it! I received many compliments.', 'Excellent', '2023-04-20', 'alice5', '6'),
+        ('Broke after only 2 months. Avoid!', 'Poor', '2023-04-04', 'alice5', '4'),
+        ('The seat is so uncomfortable and needs more cushion.', 'Poor', '2023-04-10', 'james6', '4'),
+        ('The face was cracked when I received it', 'Poor', '2023-04-23', 'james6', '5')"
 
 
 );

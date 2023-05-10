@@ -43,9 +43,9 @@ require("procedures/dbconnect.php");
                         <option value="2">2- Users who posted >= two items on the same day in two categories</option>
                         <option value="3">3- Items posted by user X with only "excellent" or "good" reviews</option>
                         <option value="4">4- Users who posted the most number of items since 5/1/2020 (inclusive)</option>
-                        <option value="5">5- Users who have favorite sellers in common</option>
+                        <option value="5">5- Sellers who are favorited by a pair of users</option>
                         <option value="6">6- Users whose items never gained 3 or more excellent reviews</option>
-                        <option value="7">7- Users who never posted a "poor" review</option>
+                        <option value="7">7- Users who never wrote a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
                         <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
                         <option value="10">10- Pairs of users who gave each other "excellent" reviews for every item they posted</option>   
@@ -118,13 +118,13 @@ require("procedures/dbconnect.php");
                         case "4": // Users who posted the most number of items since 5/1/2020 (inclusive)
                             include("procedures/cases/4-postedMostItems.php");
                             break;
-                        case "5": // Users who have favorite sellers in common
+                        case "5": // Sellers who are favorited by a pair of users
                             echo "<div class='list-container'>
-                            <h3>Users who have favorite sellers in common</h3>
+                            <h3>Sellers who are favorited by a pair of users</h3>
                             <div class='forms'><center>                             
                             <form action='5-usersCommonFavorites.php' method='post'>
                                     <select id='category1' name='category1' required>
-                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='' disabled selected>Select a user</option>
                                         <option value='alice5'>alice5</option>
                                         <option value='jane2'>jane2</option>
                                         <option value='john1'>john1</option>
@@ -132,7 +132,7 @@ require("procedures/dbconnect.php");
                                         <option value='matt3'>matt3</option>
                                     </select>
                                     <select id='category2' name='category2' required>
-                                        <option value='' disabled selected>Select a category</option>
+                                        <option value='' disabled selected>Select a user</option>
                                         <option value='alice5'>alice5</option>
                                         <option value='jane2'>jane2</option>
                                         <option value='john1'>john1</option>
@@ -145,7 +145,7 @@ require("procedures/dbconnect.php");
                         case "6": // Users whose items never gained 3 or more excellent reviews
                             include("procedures/cases/6-noExcellentItems.php");
                             break;
-                        case "7": // Users who never posted a "poor" review
+                        case "7": // Users who never wrote a "poor" review
                             include("procedures/cases/7-noPoorReviews.php");
                             break;
                         case "8": // Users who posted some reviews, but each of them is "poor"
