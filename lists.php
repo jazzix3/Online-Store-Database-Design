@@ -48,7 +48,7 @@ require("procedures/dbconnect.php");
                         <option value="7">7- Users who never posted a "poor" review</option>
                         <option value="8">8- Users who posted some reviews, but each of them is "poor"</option>
                         <option value="9">9- Users whose items never gained "poor" reviews or any reviews at all</option>
-                        <option value="10">10- User pair (A, B) such that they always gave each other "excellent" reviews for every single item they posted</option>   
+                        <option value="10">10- Pairs of users who gave each other "excellent" reviews for every item they posted</option>   
                     </select>
                     <button type="submit" name="submit" class="button" style="width:50px; font-size: 14px; ">🔎</button>
                 </form>
@@ -153,6 +153,9 @@ require("procedures/dbconnect.php");
                             break;
                         case "9": // Users whose items never gained poor reviews or any reviews at all
                             include("procedures/cases/9-noPoorItems.php");
+                            break;
+                        case "10": // Pairs of users who gave each other "excellent" reviews for every item they posted
+                            include("procedures/cases/10-pairUsersExcellentReviews.php");
                             break;
                     }
                 }
